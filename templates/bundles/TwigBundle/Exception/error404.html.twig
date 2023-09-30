@@ -1,0 +1,12 @@
+{% extends 'page_error.html.twig' %}
+{% block titre %}
+<h1>Page introuvable</h1>
+{% endblock %}
+{% block contenu %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>Erreur 404: Désolé, mais ce lien est introuvable !</p>
+    <p>Dirigez-vous vers la <a href="{{ path('homepage') }}">Page d'accueil</a>.</p>
+{% endblock %}

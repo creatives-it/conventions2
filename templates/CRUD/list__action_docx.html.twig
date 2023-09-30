@@ -1,0 +1,10 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('om') %}
+    <a class="btn btn-sm btn-info edit_link" title="OM Word"  style="display: inline-block" href="{{ admin.generateObjectUrl('om', object) }}">
+        <i class="fa fa-file-word-o"></i> OM
+    </a>
+{% endif %}
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('docx') %}
+    <a class="btn btn-sm btn-info edit_link" title="ESD format Word"  style="display: inline-block" href="{{ admin.generateObjectUrl('docx', object) }}">
+        <i class="fa fa-file-word-o"></i> ESD
+    </a>
+{% endif %}

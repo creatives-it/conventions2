@@ -1,0 +1,14 @@
+{% extends '@SonataAdmin/my_standard_layout.html.twig' %}
+
+{% block title %}
+    {% block titre_page %}{{ 'Titre'|trans }}{% endblock %}
+{% endblock %}
+{% block navbar_title %}{% block titre %}{{ 'Titre'|trans }}{% endblock %}
+    {% endblock %}
+{% block sonata_admin_content %}
+    {% block notice %}
+        {{  parent() }}
+    {% endblock notice %}
+    {% block contenu %}Contenu{% endblock %}
+
+{% endblock %}

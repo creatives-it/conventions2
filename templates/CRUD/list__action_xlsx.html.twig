@@ -1,0 +1,5 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('xlsx') %}
+<a class="btn btn-sm btn-info edit_link" title="Document Excel"  style="display: inline-block" href="{{ admin.generateObjectUrl('xlsx', object) }}">
+    <i class="fa fa-file-excel-o"></i> Xls
+</a>
+{% endif %}

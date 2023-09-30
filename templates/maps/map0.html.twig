@@ -1,0 +1,193 @@
+{% extends 'empty.html.twig' %}
+
+{% block stylesheets %}
+{#    <link rel="stylesheet" type="text/css" href="{{ asset('libs/highcharts/css/highcharts.css') }}">#}
+{#    <link rel="stylesheet" type="text/css" href="{{ asset('css/my-highcharts.css') }}">#}
+    <style>
+        .loading {
+            margin-top: 10em;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <div id="data-div-{{ div }}" data-my-data-array="{{ data|json_encode|e('html_attr') }}"></div>
+
+    <figure class="highcharts-figure">
+        <div id="{{ div }}" style="min-width: 400px; margin: 0 auto"></div>
+    </figure>
+{% endblock %}
+{% block javascripts %}
+{#    {{ parent() }}#}
+
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/modules/marker-clusters.js"></script>
+{#    <script src="https://code.highcharts.com/maps/highmaps.js"></script>#}
+{#    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>#}
+{#    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>#}
+{#    <script src="https://code.highcharts.com/maps/modules/data.js"></script>#}
+{#    <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>#}
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+        var dataDiv = document.getElementById('data-div-{{ div }}');
+        var myData = JSON.parse(dataDiv.dataset.myDataArray);
+
+        Highcharts.mapChart({{ div }}, {
+            chart: {
+                styledMode: true
+            },
+            title: {
+                text: '{{ titre }}',
+                style: { color: "#333666", fontSize: "12px", fontWeight: "bold" },
+                useHTML: true
+            },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                  verticalAlign: 'bottom'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br/>',
+                pointFormat: '<span style="text-align: right">{point.label}</span>: <b>{point.value:.1f} درهم</b><br/>',
+            },
+            plotOptions: {
+                mappoint: {
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function() {
+                            if (typeof(this.point.label) === "undefined") {
+                                return '';
+                            } else {
+                                return this.point.label;
+                            }
+                        },
+                    },
+                    cluster: {
+                        enabled: true,
+                        allowOverlap: false,
+                        animation: {
+                            duration: 450
+                        },
+                        layoutAlgorithm: {
+                            type: 'grid',
+                            gridSize: 70
+                        },
+                        zones: [{
+                            from: 1,
+                            to: 4,
+                            marker: {
+                                radius: 13
+                            }
+                        }, {
+                            from: 5,
+                            to: 9,
+                            marker: {
+                                radius: 15
+                            }
+                        }, {
+                            from: 10,
+                            to: 15,
+                            marker: {
+                                radius: 17
+                            }
+                        }, {
+                            from: 16,
+                            to: 20,
+                            marker: {
+                                radius: 19
+                            }
+                        }, {
+                            from: 21,
+                            to: 100,
+                            marker: {
+                                radius: 21
+                            }
+                        }]
+                    }
+                }
+            },
+            colorAxis: {
+                visible:false,
+                start: 1,
+                min: 1,
+                max: 40,
+                minColor: "#ffcccc",
+                maxColor: "#cc0000"
+            },
+            series: [{
+                name: '{{ titreSerie }}',
+                type: "map",
+                joinBy: "id",
+                mapData: [
+                    {
+                        "id": "id0",
+                        "name": "طنجة-أصيلة",
+                        "path": "M117,64,145,64,151,70,165,56,171,67,172,79,164,93,173,140,152,152,150,157,137,161,138,167,127,169,112,176,111,183,120,215,95,207,81,207,73,202,81,181,90,161z"
+                    },
+                    {
+                        "id": "id1",
+                        "name": "الفحص-أنجرة",
+                        "path": "M165,56,171,67,171,80,164,93,171,124,183,127,211,110,224,117,226,101,236,94,236,66,248,66,249,62,254,50,243,44,241,30,230,28,210,47,192,52,178,50z"
+                    },
+                    {
+                        "id": "id2",
+                        "name": "المضيق-الفنيدق",
+                        "path": "M241,30,254,27,265,32,276,30,279,33,262,41,260,51,264,93,273,100,280,100,278,106,282,122,265,124,269,106,257,101,239,104C234,94,237,79,236,66L248,66,254,49,243,44z"
+                    },
+                    {
+                        "id": "id3",
+                        "name": "تطوان",
+                        "path": "M138,167,145,167,149,180,174,194,185,191,209,186,229,191,227,206,232,207,233,219,232,229,242,236,245,242,270,237,287,241,297,227,295,219,305,196,325,176,330,178,321,163,311,156,305,146,288,141,282,122,265,124,269,106,257,101,239,104,236,94,226,101,224,117,211,110,183,127,171,124,173,140,152,152,150,157,137,161z"
+                    },
+                    {
+                        "id": "id4",
+                        "name": "العرائش",
+                        "path": "M73,202,59,246,56,247,36,306,60,310,66,302,80,310,91,316,102,310,133,327,159,333,175,327,178,312,190,312,190,299,217,311,225,302,212,245,232,229,233,218,232,207,229,206,229,191,209,186,174,194,149,180,144,166,127,169,112,176,111,183,120,215,95,207,81,207z"
+                    },
+                    {
+                        "id": "id5",
+                        "name": "شفشاون",
+                        "path": "M225,302,234,297,256,302,298,345,314,380,338,367,354,372,378,358,398,359,398,348,407,355,436,322,455,327,485,291,475,252,444,250,434,242,429,246,383,216,369,214,345,186,333,182,330,178,325,176,305,196,295,219,297,227,287,241,270,237,246,243,241,236,232,229,212,245z"
+                    },
+                    {
+                        "id": "id6",
+                        "name": "الحسيمة",
+                        "path": "M407,355,404,381,421,393,452,395,457,406,474,400,489,413,497,394,519,395,535,366,541,369,547,384,570,383,592,357,642,343,647,280,643,269,648,254,642,245,638,247,620,236,619,226,617,226,543,251,509,263,475,252,485,291,455,327,436,322z"
+                    },
+                    {
+                        "id": "id7",
+                        "name": "وزان",
+                        "path": "M159,333,155,348,149,357,152,375,156,379,154,390,165,394,173,407,183,404L176,394L190,388,212,402,218,419,235,421,246,435,240,446,254,452,259,450,274,459,285,453,283,446,302,442,304,435,298,432,307,428,302,395,314,380,298,345,256,302,234,297,225,302,217,311,190,299,191,311,178,312,175,327z"
+                    }
+                ],
+                borderColor: '#EFEFEF',
+                nullColor: '#EFEFEF',
+                // dataLabels: {
+                //     enabled: true,
+                //     format: '{point.value}',
+                //     align: 'right'
+                // },
+                //data: myData
+            },
+            {
+                type: 'mappoint',
+                enableMouseTracking: true,
+                colorKey: 'clusterPointsAmount',
+                name: 'Cities',
+                color: Highcharts.getOptions().colors[1],
+                data: myData
+            }]
+            });
+
+        });
+    </script>
+
+    <!-- Page specific javascripts-->
+{% endblock %}

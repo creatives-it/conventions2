@@ -1,0 +1,225 @@
+title_user_registration: التسجيل
+title_user_account: بطاقة المستخدم
+title_user_edit_profile: تعديل
+title_user_authentication: التعريف
+sonata_user_submit: تأكيد
+breadcrumb:
+  link_user_list: المستخدمون
+  link_user_create: إضافة
+  link_user_edit: تعديل
+  link_user_delete: حذف
+  link_group_list: المجموعات
+  link_group_create: إضافة
+  link_group_edit: تعديل
+  link_user_show: عرض
+users: المستخدمون
+groups: المجموعات
+switch_user_exit: Quitter l'identité
+switch_user: Changer d'identité
+user_block_logout: الخروج
+user_block_profile: Profil
+user_form:
+  label_username: الحساب
+  label_name: الإسم
+form:
+  label_email: البريد الإلكتروني
+  label_plain_password: كلمة المرور
+  label_groups: المجموعات
+  label_roles: الأدوار
+  label_locked: Verrouillé
+  label_expired: Expiré
+  label_enabled: Activé
+  label_credentials_expired: Droits expirés
+  label_created_at: Créé le
+  label_last_login: Dernière connexion
+  label_date_of_birth: Date de naissance
+  label_firstname: الإسم الشخصي
+  label_lastname: الإسم
+  label_website: Site web
+  label_biography: Biographie
+  label_gender: Civilité
+  label_locale: Langue
+  label_timezone: Fuseau horaire
+  label_phone: Téléphone
+  label_facebook_uid: Uid Facebook
+  label_facebook_name: Nom Facebook
+  label_twitter_uid: Uid Twitter
+  label_twitter_name: Nom Twitter
+  label_gplus_uid: Uid Google+
+  label_gplus_name: Nom Google+
+  label_token: Jeton
+  label_two_step_verification_code: Code de validation en deux étapes
+  username: الحساب
+  email: Adresse e-mail
+  password: كلمة المرور
+  password_confirmation: Vérification
+filter:
+  label_username: الحساب
+  label_name: الإسم
+  label_email: البريد الإلكتروني
+  label_locked: Verrouillé
+  label_id: ID
+  label_groups: المجموعات
+  label_created_at: Créé le
+  label_last_login: Dernière connexion
+  label_firstname: الإسم الشخصي
+  label_lastname: الإسم
+list:
+  label_username: الحساب
+  label_name: الإسم
+  label_email: البريد الإلكتروني
+  label_groups: المجموعات
+  label_locked: Verrouillé
+  label_enabled: Activé
+  label_created_at: Créé le
+  label_last_login: Dernière connexion
+  label_impersonating: Changer d'identité
+  label_roles: الأدوار
+  label_firstname: الإسم الشخصي
+  label_lastname: الإسم
+label_two_step_code: Validation en deux étapes
+message_two_step_code_help: Rentrer votre code de validation provenant de votre téléphone
+label_two_step_code_error: Le code de validation est invalide
+sonata_user: المستخدمون
+form_general: Général
+form_groups: المجموعات
+form_management: Gestion
+form_profile: Profil
+form_social: Social
+form_security: Sécurité
+form_status: Statut
+field:
+  label_roles_editable: الأدوار
+show:
+  label_username: الحساب
+  label_email: البريد الإلكتروني
+  label_groups: المجموعات
+  label_date_of_birth: Date de naissance
+  label_firstname: الإسم الشخصي
+  label_lastname: الإسم
+  label_website: Site web
+  label_biography: Biographie
+  label_gender: Civilité
+  label_locale: Langue
+  label_timezone: Fuseau horaire
+  label_phone: Téléphone
+  label_facebook_uid: Uid Facebook
+  label_facebook_name: Nom Facebook
+  label_twitter_uid: Uid Twitter
+  label_twitter_name: Nom Twitter
+  label_gplus_uid: Uid Google+
+  label_gplus_name: Nom Google+
+  label_token: Jeton
+  label_two_step_verification_code: Code de validation en deux étapes
+  label_created_at: Créé le
+  label_last_login: Dernière connexion
+gender_unknown: non défini
+gender_female: femme
+gender_male: homme
+sonata_profile_title: Mon tableau de bord
+link_show_profile: Mon tableau de bord
+link_edit_profile: Mon profil
+title_user_edit_authentication: Informations de connexion
+link_edit_authentication: Informations de connexion
+label_profile_gender: Civilité
+label_profile_firstname: الإسم الشخصي
+label_profile_lastname: الإسم
+label_profile_website: Site web
+label_profile_dob: Date de naissance
+label_profile_biography: Biographie
+label_profile_locale: Langue
+label_profile_timezone: Fuseau horaire
+label_profile_phone: Téléphone
+profile:
+  flash:
+    updated: Votre profil a été mis à jour.
+sonata_change_password_link: تغيير كلمة المرور
+link_register: التسجيل
+link_login: التعريف
+link_logout: الخروج
+registration:
+  flash:
+    user_created: Votre compte est créé avec succès !
+forgotten_password: نسيت كلمة المرور ?
+sonata_user_profile_breadcrumb_index: لوحة القيادة
+sonata_user_profile_breadcrumb_edit: Éditer votre profil
+sonata_user_already_authenticated: Vous êtes déjà identifié
+security:
+  login:
+    username: الحساب
+    password: كلمة المرور
+title_user_edit_password: title_user_edit_password
+title_user_resetting: title_user_resetting
+title_user_resetting_reset: title_user_resetting_reset
+
+# ajout
+username: الحساب
+label_username: 	إسم المستخذم
+form.label_autres_infos: معلومات إضافية
+form.label_poste: المهمة
+form.label_username:    الحساب
+form.label_real_roles: الأدوار
+list.label_autres_infos: معلومات إضافية
+list.label_poste: المهمة
+list.label_username: 	الحساب
+list.label_real_roles: الأدوار
+filter.label_autres_infos: معلومات إضافية
+filter.label_poste: المهمة
+filter.label_username: 	الحساب
+filter.label_real_roles: الأدوار
+Group: 	المجموعة
+Roles: 	الأدوار
+Name: 	الإسم
+Group List: 	لائحة المجموعات
+Security:   الأمن
+General:    عام
+field.label_roles_editable:   اختر الأدوار من اللائحة التالية
+Group Create:   إضافة مجموعة
+Username: 	إسم الحساب
+Email: 	البريد الإلكتروني
+Groups: 	المجموعات
+Enabled: 	مفعل
+Created At: 	تاريخ الإضافة
+Impersonating: 	شخصنة
+Id: 	رقم
+User List: 	لائحة المستخدمين
+User: 	المستخدم
+Profile: 	البطاقة
+Date Of Birth: 	تاريخ الازدياد
+Firstname: 	الإسم الشخصي
+Lastname: 	الإسم العائلي
+Website: 	الموقع
+Biography: 	معلومات
+Gender: 	الجنس
+Locale: 	المنطقة
+Timezone: 	Timezone
+Phone: 	الهاتف
+Plain Password: 	كلمة المرور
+Social: 	الوسائط
+Facebook Uid: 	Facebook Uid
+Facebook Name: 	Facebook Name
+Twitter Uid: 	Twitter Uid
+Twitter Name: 	Twitter Name
+Gplus Uid: 	Gplus Uid
+Gplus Name: 	Gplus Name
+Status: 	الوضعية
+Keys: 	Keys
+Token: 	Token
+Two Step Verification Code: 	Two Step Verification Code
+User Create: 	إضافة مستخدم جديد
+Espace Administrateurs:    الإدارة
+Groupes d'utilisateurs: 	مجموعات المستخدمين
+Se connecter: 	الولوج
+Compte: 	الحساب
+Mot de passe: 	كلمة المرور
+Mot de passe oublié: 	نسيت كلمة المرور
+Real Roles:   الأدوار
+Identification: 	التعريف
+Sécurité: 	الحماية
+Poste: 	الوظيفة أو المنصب
+Autres Infos: 	معلومات إضافية
+Groupes:    المجموعات
+Contact Last: 	المراسل
+Contacts: 	المراسلون
+Contacts Autres:  مراسلين آخرين
+Entite Consultantes: مسموح للإطلاع

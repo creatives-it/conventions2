@@ -1,0 +1,21 @@
+<div class="box box-primary">
+    <div class="table-responsive">
+    <h3>{{ titres.0 }}</h3>
+    <table class="table table-bordered table-hover sonata-ba-list">
+        <thead>
+            <tr>
+                <th>{{ titres.1 }}</th>
+                <th>{{ titres.2 }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for data in dataxy %}
+            <tr>
+                <td align="right">{{ data.x }}</td>
+                <td align="center">{{ data.y }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>

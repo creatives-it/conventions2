@@ -1,0 +1,78 @@
+{% extends 'empty.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/highcharts/css/highcharts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/my-highcharts.css') }}">
+{% endblock %}
+{% block body %}
+
+    <figure class="highcharts-figure">
+        <div id="{{ div }}" style="min-width: 400px; margin: 0 auto"></div>
+    </figure>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {#    <script src="{{ asset('libs/highcharts/highcharts.js') }}"></script>
+        <script src="{{ asset('libs/highcharts/modules/exporting.js') }}"></script>
+        <script src="{{ asset('libs/highcharts/modules/export-data.js') }}"></ript>
+
+    #}
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+{#        <script src="https://code.highcharts.com/maps/modules/map.js"></script>#}
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/marker-clusters.js"></script>
+
+
+    <script type="text/javascript">
+        Highcharts.setOptions({
+            title: {
+                style: {
+                    fontSize: '14px',
+                    fontFamily: 'Samim',
+                    color: '#333666',
+                    fontWeight: 'bold'
+                }
+            },
+            subtitle: {
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Samim',
+                    color: '#333666',
+                    fontWeight: 'bold'
+                }
+            },
+            lang: {
+                months: ["يناير","فبراير","مارس","أبريل","ماي","يونيو","يوليوز","غشت","شتنبر","أكتوبر","نونبر","دجنبر"],
+                weekdays: ["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
+                decimalPoint: ',',
+                thousandsSep: '.',
+                downloadJPEG: "Télécharger image JPEG",
+                downloadPDF: "Télécharger image PDF",
+                downloadPNG: "Télécharger image PNG",
+                downloadSVG: "Télécharger document SVF",
+                printChart: "Imprimer image"
+            },
+            credits: {
+                style: {
+                    cursor: 'pointer',
+                    color: '#ccc',
+                    fontSize: '12px'
+                },
+                text: '',
+                href: '#'
+            },
+			accessibility: {
+				enabled: false
+			}
+        });
+
+        {{ chart(chart) }}
+
+
+    </script>
+
+    <!-- Page specific javascripts-->
+{% endblock %}

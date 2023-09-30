@@ -1,0 +1,16 @@
+{% extends 'page_error.html.twig' %}
+
+{% block titre %}
+    Mauvaise passerelle.
+{% endblock %}
+
+{% block contenu %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Erreur 502:  <a href="{{ path('homepage') }}">Retour à la page d'accueil</a>.
+    </p>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+{% block field %}
+    {% if object.media is not empty %}
+    <a href="{{ path('sonata_media_download', {'id': object.media|sonata_urlsafeid }) }}">
+            <i class="fa fa-file-pdf-o"></i>
+{#      {{ object.media is empty ? '' : object.media.name }}#}
+    </a>
+    {% endif %}
+{% endblock %}

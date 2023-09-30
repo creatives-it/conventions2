@@ -1,0 +1,11 @@
+remove line in composer.json:
+        "egeloen/serializer-bundle": "^1.0",
+
+Lock file operations: 1 install, 1 update, 4 removals
+  - Removing nyholm/psr7 (1.3.2)
+  - Removing pclzip/pclzip (2.8.2)
+  - Removing phpoffice/common (0.2.9)
+  - Removing zendframework/zend-escaper (2.6.1)
+  - Locking laminas/laminas-escaper (2.10.0)
+  - Upgrading phpoffice/phpword (0.17.0 => 0.18.3)
+

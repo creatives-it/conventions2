@@ -1,0 +1,26 @@
+{% block gmap_address_widget %}
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset("libs/jquery.ui.addresspicker.js") }}"></script>
+
+    <div id="{{ id }}_gmap_address_widget"></div>
+    <div id="{{ id }}_input">{{ block('form_widget') }}</div>
+    <div id="{{ id }}_map" class="gmap_address_map"></div>
+
+    <script type="text/javascript">
+        $(function() {
+            var addresspickerMap = $("#{{ form.address.get("id") }}").addresspicker({
+                regionBias: "fr",
+                elements: {
+                    map: "#{{ id }}_map",
+                    locality: '#{{ form.locality.get("id") }}',
+                    country:  '#{{ form.country.get("id") }}',
+                    lat:      "#{{ form.lat.get("id") }}",
+                    lng:      "#{{ form.lng.get("id") }}"
+                }
+            });
+            var gmarker = addresspickerMap.addresspicker("marker");
+            gmarker.setVisible(true);
+            addresspickerMap.addresspicker("updatePosition");
+        });
+    </script>
+{% endblock %}

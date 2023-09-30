@@ -1,0 +1,15 @@
+{% extends 'page_error.html.twig' %}
+
+{% block titre %}
+    Échec de l'analyse HTTP. !
+{% endblock %}
+{% block contenu %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Erreur 400: Prière de vérifier l'adresse ou <a href="{{ path('homepage') }}">retourner à la page d'accueil</a>.
+    </p>
+{% endblock %}

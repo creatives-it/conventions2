@@ -1,0 +1,5 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('delais') %}
+<a class="btn btn-sm btn-primary edit_link" title="Délais"  style="display: inline-block" href="{{ admin.generateObjectUrl('delais', object) }}">
+    <i class="fa fa-reorder"></i> Délais
+</a>
+{% endif %}

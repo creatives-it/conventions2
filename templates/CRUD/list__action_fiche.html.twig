@@ -1,0 +1,5 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('fiche') %}
+    <a class="btn btn-sm btn-info edit_link" title="{{ 'Fiche'|trans }}"  style="display: inline-block" href="{{ admin.generateObjectUrl('fiche', object) }}">
+        <i class="fa fa-file-o"></i> {{ 'Fiche'|trans }}
+    </a>
+{% endif %}

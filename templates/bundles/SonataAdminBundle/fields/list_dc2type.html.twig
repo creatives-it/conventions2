@@ -1,0 +1,26 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+{% block field %}
+    {% for key, v in value %}
+        <div>
+            <p>
+                {#<b>{{ key|capitalize  }}</b>: {% if v is not iterable %}{{ v|raw }}{% else %}[{% for k,va in v %}{{ k|capitalize }}:{{ va|raw }}{% endfor %}]{% endif %}#}
+                <b>{{ key|camelToSpace|capitalize  }}</b>:
+                {% if v is not iterable %}
+                    {% if v.timestamp is not defined %}
+                        {{ v|raw }}
+                    {% else %}
+                        {{ v|date('d/m/Y') }}
+                    {% endif %}
+                {% else %}
+                    [{% for k,va in v %}{{ k|capitalize }}:
+                        {% if va.timestamp is not defined %}
+                            {{ va|raw }}
+                        {% else %}
+                            {{ va|date('d/m/Y') }}
+                        {% endif %}
+                    {% endfor %}]
+                {% endif %}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock %}

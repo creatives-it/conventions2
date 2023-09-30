@@ -1,0 +1,61 @@
+{% extends 'page.html.twig' %}
+
+{% block titre_page %}{{ 'Liste des conventions unread'|trans }}{% endblock %}
+{% block titre %}{{ 'Liste des conventions unread'|trans }}{% endblock %}
+{% block contenu %}
+    <div class="box-- box-primary--">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="box box-primary">
+                    <p>{{ "Nombre trouvé"|trans }} : {{ conventions|length }}</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped- table-hover sonata-ba-list">
+                            <thead>
+                            <tr>
+{#                            <th>{{ 'Type convention'|trans }}</th>#}
+                                <th>{{ 'Numero'|trans }}</th>
+                                <th>{{ 'Objet Convention'|trans }}</th>
+                                <th>{{ 'Secteur'|trans }}</th>
+                                <th>{{ 'Maitre Ouvrage'|trans }}</th>
+                                <th>{{ 'Stade'|trans }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for convention in conventions %}
+                                <tr class="{% if convention.isReadBy(app.user) == false %}active{% endif %}">
+                                    {#                                <td align="center">{{ convention.typeConvention }}</td>#}
+                                    <td align="center">{{ convention.numero }}</td>
+                                    <td><a href="{{ path('admin_app_convention_view', { 'id': convention.id }) }}">{{ convention.objetConvention }}</a></td>
+                                    <td align="center">{% if convention.secteur %}{{ convention.secteur.name }}{% endif %}</td>
+                                    <td align="center">{% if convention.maitreOuvrage %}{{ convention.maitreOuvrage.name }}{% endif %}</td>
+                                    <td align="center">{% if convention.stade %}{{ convention.stade.name }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="card text-right">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ 'Recherche'|trans }}</h4>
+                            <form method="get" action="">
+                                {{ form_errors(form) }}
+                                {{ form_rest(form) }}
+                                <p class="btn-group">
+                                    <button class="btn btn-primary" type="submit" name="submit-filter"><i class="fa fa-filter"></i> {{ 'Filtrer'|trans }}</button>
+                                    <a class="btn btn-default" href="?reset-filter"><i class="fa fa-times"></i> {{ 'Initialiser filtres'|trans }}</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

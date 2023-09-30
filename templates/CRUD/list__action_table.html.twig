@@ -1,0 +1,6 @@
+{#{{ dump(admin) }}#}
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('comparaisonprix') and (object.concurrents is not empty) and (object.estimationsValides is not empty) %}
+    <a class="btn btn-sm btn-success edit_link" title="Comparaison prix"  style="display: inline-block" href="{{ admin.generateObjectUrl('comparaisonprix', object) }}">
+        <i class="fa fa-table"></i> Prix
+    </a>
+{% endif %}

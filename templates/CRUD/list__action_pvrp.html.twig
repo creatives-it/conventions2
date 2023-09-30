@@ -1,0 +1,5 @@
+{% if  object.receptionProvisoire and admin.isGranted('VIEW', object) and admin.hasRoute('pvrp') %}
+<a class="btn btn-sm btn-success edit_link" title="PV réception provisoire"  style="display: inline-block" href="{{ admin.generateObjectUrl('pvrp', object) }}">
+    <i class="fa fa-file-text-o"></i> PVRP
+</a>
+{% endif %}

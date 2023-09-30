@@ -1,0 +1,31 @@
+{% extends 'page.html.twig' %}
+
+{% block titre_page %}{{ 'Trash'|trans }}{% endblock %}
+{% block titre %}{{ 'Trash'|trans }}{% endblock %}
+{% block contenu %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="box box-danger">
+
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <div class="list-group">
+                                <a href="{{ path('trash_conventions') }}" class="list-group-item">{{ 'Conventions supprimees'|trans }}</a>
+                            </div>
+
+                        </div><!--end col-->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+{% endblock %}

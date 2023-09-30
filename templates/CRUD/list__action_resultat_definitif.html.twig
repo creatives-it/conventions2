@@ -1,0 +1,5 @@
+{% if  (object.seanceOuverturePlis() is not empty) and admin.isGranted('VIEW', object) and admin.hasRoute('resultat_definitif') %}
+<a class="btn btn-sm btn-btn56 edit_link" title="Résultat définitif"  style="display: inline-block" href="{{ admin.generateObjectUrl('resultat_definitif', object) }}">
+    <i class="fa fa-file-text-o"></i> Résultat définitif
+</a>
+{% endif %}

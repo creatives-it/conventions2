@@ -1,0 +1,21 @@
+twig:
+    globals:
+        SITE_NAME: 'تدبير الإتفاقيات'
+        locales: '%app.locales%'
+        settings: '@App\Service\Settings'
+    exception_controller: null
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'Form/fields.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+        - 'bootstrap_4_layout.html.twig'
+        - '@SonataFormatter/Form/formatter.html.twig'
+        - '@SonataCore/Form/datepicker.html.twig'
+        - 'DependentSelectBundle::fields.html.twig'
+#    date:
+#        timezone:  	Africa/Lagos
+framework:
+    templating:
+        engines: ['twig']

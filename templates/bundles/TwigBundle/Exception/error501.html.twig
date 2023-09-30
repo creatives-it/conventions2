@@ -1,0 +1,16 @@
+{% extends 'page_error.html.twig' %}
+
+{% block titre %}
+    Le serveur ne supporte pas le service demandé.
+{% endblock %}
+
+{% block contenu %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Erreur 501:  <a href="{{ path('homepage') }}">Retour à la page d'accueil</a>.
+    </p>
+{% endblock %}

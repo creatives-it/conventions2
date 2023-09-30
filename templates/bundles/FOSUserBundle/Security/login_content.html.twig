@@ -1,0 +1,81 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <img src="{{ asset('img/login_header.png') }}" class="img-fluid" alt="{{ SITE_NAME }}">
+                <div class="card-header">
+                    <h3 dir="auto">{{ "Se connecter"|trans }}</h3>
+                    <div>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {#{% else %}#}
+                            {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form  action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}"  class="form-control" placeholder="{{ "Compte"|trans }}" required="required" autocomplete="username"  autofocus/>
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" id="password" name="_password"  class="form-control" placeholder="{{ "Mot de passe"|trans }}" required="required" autocomplete="current-password" />
+                        </div>
+                        <div class="row align-items-center remember">
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn float-right login_btn" />
+                        </div>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    </form>
+                </div>
+                <div class="card-footer">
+                    {#<div class="d-flex justify-content-center links">
+                        Pas de compte?<a href="{{ path('fos_user_registration_register')}}">S'enregistrer</a>
+                    </div>#}
+                    <div class="d-flex justify-content-center links" dir="auto">
+                        <a href="{{ path('fos_user_resetting_request') }}">{{ "Mot de passe oublié ?"|trans }}</a>
+                    </div>
+                </div>
+{#                <img src="{{ asset('img/login_footer.png') }}" class="img-fluid" alt="">#}
+                {#
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-center links">
+                                        Creative Engineering s.a.r.l.
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-center links">
+                                        Réalisé avec l'appui de
+                                    </div>
+                                    <div class="img-center">
+                                        <img src="{{ asset('img/giz_sm.png') }}" class="img-fluid" alt="GIZ">
+                                    </div>
+                                </div>
+                                #}
+            </div>
+        </div>
+    </div>

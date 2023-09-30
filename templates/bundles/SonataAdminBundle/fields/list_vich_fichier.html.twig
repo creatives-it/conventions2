@@ -1,0 +1,13 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+{% block field %}
+    <div>
+        {%- if vich_uploader_asset(object, 'fichier') is not empty -%}
+            <a class="btn btn-sm btn-default" title="{{ 'Télécharger'|trans }}" href="{{ asset(vich_uploader_asset(object, 'fichier'))  }}">
+                <i class="glyphicon glyphicon-download"></i>
+                {{ 'Télécharger'|trans }}
+            </a>
+        {% else %}
+            <span></span>
+        {% endif %}
+    </div>
+{% endblock %}

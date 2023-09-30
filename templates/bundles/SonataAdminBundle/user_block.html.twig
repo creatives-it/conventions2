@@ -1,0 +1,18 @@
+{% extends '@SonataAdmin/Core/user_block.html.twig' %}
+{% block user_block %}
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<li>{{ 'Compte'|trans }}: {{ app.user.username }}</li>
+		{% endif %}
+
+        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'Déconnexion'|trans }}</a></li>
+        {#<li><a href="{{ path('profil') }}">Mon profile</a></li>#}
+        {#<li><a href="{{ path('fos_user_profile_edit') }}">Modifier mon profile</a></li>#}
+        <li><a href="{{ path('fos_user_resetting_request') }}">{{ 'Changer mot de passe'|trans }}</a></li>
+        {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_UTILISATEURS') %}
+          <li class="user-body"><a href="{{ path('admin_sonata_user_user_list') }}">{{ 'Gérer les utilisateurs'|trans }}</a></li>
+        {% endif %}
+        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+            <li class="user-body"><a href="{{ path('sonata_admin_dashboard', {'_switch_user': '_exit'}) }}">{{ 'Quitter l\'identité'|trans }}</a></li>
+        {% endif %}
+
+{% endblock %} 

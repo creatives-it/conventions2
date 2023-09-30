@@ -1,0 +1,21 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <img src="{{ asset('img/login_header.png') }}" class="img-fluid" alt="{{ SITE_NAME }}">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                    {% if targetUrl %}
+                        <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock fos_user_content %}

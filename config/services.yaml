@@ -1,0 +1,382 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    app.organisme: 'تدبير الإتفاقيات'
+    app.objet_mail_notificiation: 'تدبير الإتفاقيات'
+    mailer_user: 'contact@creatives.ma'
+    app.email.sender: 'creatives.engineering.dev@gmail.com'
+    app.email.test: 'creatives.engineering.dev@gmail.com'
+    #    mailer_user: 'creatives.engineering.dev@gmail.com' #'contact@creatives.ma'
+    #    app.email.sender: 'creatives.engineering.dev@gmail.com' #'contact@creatives.ma'
+#    locale: 'fr'
+    locale: 'ar_MA'
+    app.locales: [ar_MA, fr]
+    app_locales: 'fr'
+#    app_locales: 'ar_MA|fr'
+    app.path.app_images:   '../public_html/conventions/uploads/app/images'
+    app.path.app_fichiers: '../public_html/conventions/uploads/app/fichiers'
+    app.path.divers_images:   '../public_html/conventions/uploads/divers/images'
+    app.path.divers_fichiers: '../public_html/conventions/uploads/divers/fichiers'
+    sonata.user.admin.user.class:  App\Application\Sonata\UserBundle\Admin\SonataUserAdmin
+    # optionally use a custom MaskBuilder
+    #sonata.admin.security.mask.builder.class: Sonata\AdminBundle\Security\Acl\Permission\MaskBuilder
+dependent_select:
+    contact_by_entite:
+        class: App\Entity\Contact
+        parent_property: entite
+        property: nomComplet
+        role: ROLE_USER
+        no_result_msg: 'Aucun contact trouvé !'
+        order_property: nom
+        order_direction: ASC
+
+services:
+#    security.acl.permission.map:
+#        class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+    authentication.handler.login_success_handler:
+        class:  App\Security\LoginSuccessHandler
+        arguments:  ['@router', '@security.authorization_checker']
+
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $locales: '%app_locales%'
+            $defaultLocale: '%locale%'
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php,Application}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+#    gedmo.listener.loggable:
+#        class: Gedmo\Loggable\LoggableListener
+#        tags:
+#            - { name: doctrine.event_subscriber, connection: default }
+#        calls:
+#            - [ setAnnotationReader, [ "@annotation_reader" ] ]
+    App\EventListener\EventPostPersist:
+        tags:
+            -
+                name: 'doctrine.event_listener'
+                event: 'postPersist'
+
+                # listeners can define their priority in case multiple listeners are associated
+                # to the same event (default priority = 0; higher numbers = listener is run earlier)
+                priority: 500
+
+                # you can also restrict listeners to a specific Doctrine connection
+                connection: 'default'
+
+    twig.extension.date:
+        class: Twig_Extensions_Extension_Date
+        arguments: ["@translator"]
+        tags:
+            - { name: twig.extension }
+
+    form.type.gmap_address:
+        class: App\Form\GMapAddressType
+        tags:
+            - { name: form.type, alias: gmap_address }
+
+    app.defaultcontrollerservice:
+        class: App\Controller\DefaultController
+        public: true
+        calls:
+            - [setContainer, ["@service_container"]]
+    # # Block
+    sonata.block.service.stat:
+        class: App\Block\StatBlockService
+        arguments:
+            - "sonata.block.service.stat"
+            - "@templating"
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: sonata.block }
+
+    sonata.user.admin.user:
+        class: "%sonata.user.admin.user.class%"
+        arguments: [~, "%sonata.user.admin.user.entity%", "%sonata.user.admin.user.controller%"]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Espace Administrateurs, label_catalogue: "%sonata.user.admin.label_catalogue%", label: "users", icon: "<i class=\"fa fa-user\"></i>" }
+        calls:
+            - [ setUserManager, [ "@fos_user.user_manager" ] ]
+            - [ setTranslationDomain, [ "%sonata.user.admin.user.translation_domain%" ] ]
+    sonata.user.admin.group:
+        class: "%sonata.user.admin.group.class%"
+        arguments: [~, "%sonata.user.admin.group.entity%", "%sonata.user.admin.group.controller%"]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Espace Administrateurs, label_catalogue: "%sonata.user.admin.label_catalogue%", label: Groupes d'utilisateurs }
+        calls:
+            - [ setTranslationDomain, [ "%sonata.user.admin.group.translation_domain%" ] ]
+
+    admin.log:
+        class: App\Admin\LogAdmin
+        arguments: [~, App\Entity\Log, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Espace Administrateurs, label: Traçabilité, show_in_dashboard: true }
+        public: true
+
+    admin.convention:
+        class: App\Admin\ConventionAdmin
+        arguments: [~, App\Entity\Convention, App\Controller\ConventionAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Conventions, label: Convention }
+        public: true
+
+    admin.convention_contribution:
+        class: App\Admin\ConventionContributionAdmin
+        arguments: [~, App\Entity\ConventionContribution, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Conventions, label: ConventionContribution, show_in_dashboard: false }
+        public: true
+
+    admin.convention_document:
+        class: App\Admin\ConventionDocumentAdmin
+        arguments: [~, App\Entity\ConventionDocument, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Conventions, label: ConventionDocument, show_in_dashboard: false }
+        public: true
+
+    admin.convention_engagement:
+        class: App\Admin\ConventionEngagementAdmin
+        arguments: [~, App\Entity\ConventionEngagement, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Conventions, label: ConventionEngagement, show_in_dashboard: false }
+        public: true
+
+    admin.convention_versement:
+        class: App\Admin\ConventionVersementAdmin
+        arguments: [~, App\Entity\ConventionVersement, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Conventions, label: ConventionVersement, show_in_dashboard: false }
+        public: true
+
+    admin.convention_signature:
+        class: App\Admin\ConventionSignatureAdmin
+        arguments: [~, App\Entity\ConventionSignature, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ConventionSignature, show_in_dashboard: false }
+        public: true
+
+    admin.entite:
+        class: App\Admin\EntiteAdmin
+        arguments: [~, App\Entity\Entite, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Entites }
+        public: true
+
+    admin.nature_contribution:
+        class: App\Admin\NatureContributionAdmin
+        arguments: [~, App\Entity\NatureContribution, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: NatureContributions }
+        public: true
+
+    admin.nature_convention:
+        class: App\Admin\NatureConventionAdmin
+        arguments: [~, App\Entity\NatureConvention, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: NatureConventions }
+        public: true
+
+    admin.partenaire:
+        class: App\Admin\PartenaireAdmin
+        arguments: [~, App\Entity\Partenaire, App\Controller\PartenaireAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Partenaires, label: Partenaires }
+        public: true
+
+    admin.secteur:
+        class: App\Admin\SecteurAdmin
+        arguments: [~, App\Entity\Secteur, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Secteurs }
+        public: true
+
+    admin.branche:
+        class: App\Admin\BrancheAdmin
+        arguments: [~, App\Entity\Branche, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Branches }
+        public: true
+
+    admin.stade:
+        class: App\Admin\StadeAdmin
+        arguments: [~, App\Entity\Stade, 'PixSortableBehaviorBundle:SortableAdmin']
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Stades }
+        public: true
+
+    admin.statut_convention:
+        class: App\Admin\StatutConventionAdmin
+        arguments: [~, App\Entity\StatutConvention, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: StatutConventions }
+        public: true
+
+    admin.thematique:
+        class: App\Admin\ThematiqueAdmin
+        arguments: [~, App\Entity\Thematique, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Thematiques }
+        public: true
+
+    admin.type_convention:
+        class: App\Admin\TypeConventionAdmin
+        arguments: [~, App\Entity\TypeConvention, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: TypeConventions }
+        public: true
+
+    admin.localisation:
+        class: App\Admin\LocalisationAdmin
+        arguments: [~, App\Entity\Localisation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Localisation }
+        public: true
+
+    admin.convention_stade:
+        class: App\Admin\ConventionStadeAdmin
+        arguments: [~, App\Entity\ConventionStade, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ConventionStade, show_in_dashboard: false }
+        public: true
+
+    admin.organe_gouvernance:
+        class: App\Admin\OrganeGouvernanceAdmin
+        arguments: [~, App\Entity\OrganeGouvernance, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: OrganeGouvernances, label: OrganeGouvernances }
+        public: true
+
+    admin.convention_suivi_execution:
+        class: App\Admin\ConventionSuiviExecutionAdmin
+        arguments: [~, App\Entity\ConventionSuiviExecution, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ConventionSuiviExecution, show_in_dashboard: false }
+        public: true
+
+    admin.contact:
+        class: App\Admin\ContactAdmin
+        arguments: [~, App\Entity\Contact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Contacts, label: Contacts }
+        public: true
+
+    admin.domaine_competence:
+        class: App\Admin\DomaineCompetenceAdmin
+        arguments: [~, App\Entity\DomaineCompetence, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: DomaineCompetences }
+        public: true
+
+    admin.document_planification:
+        class: App\Admin\DocumentPlanificationAdmin
+        arguments: [~, App\Entity\DocumentPlanification, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: DocumentPlanifications }
+        public: true
+
+    admin.type_session:
+        class: App\Admin\TypeSessionAdmin
+        arguments: [~, App\Entity\TypeSession, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: TypeSessions }
+        public: true
+
+    admin.session:
+        class: App\Admin\SessionAdmin
+        arguments: [~, App\Entity\Session, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Sessions, label: Sessions }
+        public: true
+
+    admin.projet:
+        class: App\Admin\ProjetAdmin
+        arguments: [~, App\Entity\Projet, App\Controller\ProjetAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Projets, label: Projets }
+        public: true
+
+    admin.axe:
+        class: App\Admin\AxeAdmin
+        arguments: [~, App\Entity\Axe, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Projets, label: Axes }
+        public: true
+
+    admin.projet_nature:
+        class: App\Admin\ProjetNatureAdmin
+        arguments: [~, App\Entity\ProjetNature, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Projets, label: ProjetNatures }
+        public: true
+
+    admin.projet_phase:
+        class: App\Admin\ProjetPhaseAdmin
+        arguments: [~, App\Entity\ProjetPhase, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Projets, label: ProjetPhases }
+        public: true
+
+    admin.convention_engagement_region:
+        class: App\Admin\ConventionEngagementRegionAdmin
+        arguments: [~, App\Entity\ConventionEngagementRegion, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ConventionEngagementRegion, show_in_dashboard: false }
+        public: true
+
+    admin.arrete:
+        class: App\Admin\ArreteAdmin
+        arguments: [~, App\Entity\Arrete, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Sessions, label: Arretes, show_in_dashboard: true }
+        public: true
+
+    admin.mandat:
+        class: App\Admin\MandatAdmin
+        arguments: [~, App\Entity\Mandat, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Sessions, label: Mandat List }
+        public: true
+
+    admin.convention_repartition_localisation:
+        class: App\Admin\ConventionRepartitionLocalisationAdmin
+        arguments: [~, App\Entity\ConventionRepartitionLocalisation, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ConventionRepartitionLocalisation, show_in_dashboard: false }
+        public: true
+
+    admin.type_entite:
+        class: App\Admin\TypeEntiteAdmin
+        arguments: [~, App\Entity\TypeEntite, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: TypeEntite, show_in_dashboard: false }
+        public: true
+
+    admin.stade_elaboration:
+        class: App\Admin\StadeElaborationAdmin
+        arguments: [~, App\Entity\StadeElaboration, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Stade Elaboration List }
+        public: true
+
+    admin.stade_execution:
+        class: App\Admin\StadeExecutionAdmin
+        arguments: [~, App\Entity\StadeExecution, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Référentiel, label: Stade Execution List }
+        public: true

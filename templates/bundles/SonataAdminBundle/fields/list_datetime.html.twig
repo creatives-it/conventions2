@@ -1,0 +1,8 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+{% block field %}
+    {% if value %}
+        {{ value| format_datetime(null, 'fr', null, constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')) }} {#null, 'fr', 'Africa/Casablanca',constant('IntlDateFormatter::LONG'), constant('IntlDateFormatter::SHORT')#}
+    {% else %}
+        {{ value }}
+    {% endif %}
+{% endblock %}

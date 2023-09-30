@@ -1,0 +1,5 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('export2') %}
+<a class="btn btn-sm btn-success edit_link" title="Document Excel"  style="display: inline-block" href="{{ admin.generateObjectUrl('export2', object) }}">
+    <i class="fa fa-file-excel-o"></i> Export
+</a>
+{% endif %}

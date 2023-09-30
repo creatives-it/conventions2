@@ -1,0 +1,20 @@
+
+httplug:
+  classes:
+    client: Http\Adapter\Guzzle6\Client
+    message_factory: Http\Message\MessageFactory\GuzzleMessageFactory
+  clients:
+    acme:
+      factory: httplug.factory.guzzle6
+
+ivory_google_map:
+  map:
+    debug: "%kernel.debug%"
+    language: "%locale%"
+  #    api_key: "AIzaSyBBrJFs8uQ1JnV-IKI50HzZQJR4hyL1xrE"
+    api_key: "AIzaSyDOLLtiEqeu_9lJKzx-sNhAexE1hQxiOwA"
+#  geocoder:
+#    api_key: "AIzaSyDOLLtiEqeu_9lJKzx-sNhAexE1hQxiOwA"
+#    client: httplug.client.default
+#    message_factory: httplug.message_factory.default
+#    format: json

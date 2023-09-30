@@ -1,0 +1,61 @@
+doctrine:
+    dbal:
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+        # configure these for your database server
+        driver: 'pdo_mysql'
+        server_version: '5.7'
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+
+        url: '%env(resolve:DATABASE_URL)%'
+    orm:
+        auto_generate_proxy_classes: true
+        auto_mapping: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        mappings:
+            SonataMediaBundle: ~
+            SonataUserBundle: ~
+            FOSUserBundle: ~
+            ApplicationSonataUserBundle: ~
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
+            gedmo_translatable:
+                type: annotation
+                prefix: Gedmo\Translatable\Entity
+                dir: "%kernel.root_dir%/Gedmo/Translatable/Entity"
+                alias: GedmoTranslatable # (optional) it will default to the name set for the mapping
+                is_bundle: false
+            gedmo_translator:
+                type: annotation
+                prefix: Gedmo\Translator\Entity
+                dir: "%kernel.root_dir%/Gedmo/Translator/Entity"
+                alias: GedmoTranslator # (optional) it will default to the name set for the mapping
+                is_bundle: false
+            gedmo_loggable:
+                type: annotation
+                prefix: Gedmo\Loggable\Entity
+                dir: "%kernel.root_dir%/Gedmo/Loggable/Entity"
+                alias: GedmoLoggable # (optional) it will default to the name set for the mapping
+                is_bundle: false
+            gedmo_tree:
+                type: annotation
+                prefix: Gedmo\Tree\Entity
+                dir: "%kernel.root_dir%/Gedmo/Tree/Entity"
+                alias: GedmoTree # (optional) it will default to the name set for the mapping
+                is_bundle: false
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
+        dql:
+            datetime_functions:
+                date_format:  DoctrineExtensions\Query\Mysql\DateFormat
+                year:         DoctrineExtensions\Query\Mysql\Year
+                month:        DoctrineExtensions\Query\Mysql\Month

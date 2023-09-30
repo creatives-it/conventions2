@@ -1,0 +1,120 @@
+{% extends 'page.html.twig' %}
+
+{% block titre_page %}{{ 'Partenaire'|trans }}{% endblock %}
+{% block titre %}{{ 'Partenaire'|trans }}: {{ partenaire.name }}{% endblock %}
+{% block contenu %}
+    <div class="container">
+        {% if (1==2) %}
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="box box-success">
+
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">{{ 'Numero'|trans}}</th>
+                                        <td>{{ convention.numero }}</td>
+                                        <th scope="col">{{ 'Date Signature'|trans}}</th>
+                                        <td>{{ convention.dateSignature is empty ? "": convention.dateSignature|date('Y/m/d') }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div><!--end col-->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ render(controller('App\\Controller\\ChartsController::graph802', { 'id': partenaire.id })) }}
+            </div>
+        </div>
+        <div class="box box-success">
+            <div class="row">
+                <div class="col-md-12">
+                {{ render(controller('App\\Controller\\ConventionAdminController::tableParticipations', { 'id': partenaire.id, '_sonata_admin':'admin.convention' })) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'conventionEngagements'|trans }}</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'Convention'|trans }}</th>
+                                    <th>{{ 'Annee'|trans }}</th>
+                                    <th>{{ 'Montant Programme'|trans }}</th>
+                                    <th>{{ 'Montant Realise'|trans }}</th>
+                                    <th>{{ 'Intitule'|trans }}</th>
+                                    <th>{{ 'Nature Contribution'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for engagement in partenaire.conventionEngagements %}
+                                    <tr>
+                                        <td>{{ engagement.convention }}</td>
+                                        <td>{{ engagement.annee }}</td>
+                                        <td align="right">{{ engagement.montantProgramme|number_format(0,',','.') }}</td>
+                                        <td>{{ engagement.montantRealise|number_format(0,',','.') }}</td>
+                                        <td>{{ engagement.intitule }}</td>
+                                        <td>{{ engagement.natureContribution }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'conventionContributions'|trans }}</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'Convention'|trans }}</th>
+                                    <th>{{ 'Montant'|trans }}</th>
+                                    <th>{{ 'Date Prevue'|trans }}</th>
+                                    <th>{{ 'Intitule'|trans }}</th>
+                                    <th>{{ 'Nature Contribution'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for contribution in partenaire.conventionContributions %}
+                                    <tr>
+                                        <td>{{ contribution.convention }}</td>
+                                        <td>{{ contribution.montant|number_format(0,',','.') }}</td>
+                                        <td>{{ contribution.datePrevue is empty ? "": contribution.datePrevue|date('Y/m/d') }}</td>
+                                        <td>{{ contribution.contribution }}</td>
+                                        <td>{{ contribution.natureContribution }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

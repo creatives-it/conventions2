@@ -1,0 +1,144 @@
+sonata_admin:
+    title:                'تدبير الإتفاقيات'
+    title_logo:           'img/logo.png'
+    show_mosaic_button: false
+    security:
+      handler: sonata.admin.security.handler.role
+      role_admin: ROLE_USER
+      role_super_admin: ROLE_SUPER_ADMIN
+    persist_filters: true
+
+    dashboard:
+        blocks:
+#            - position: top
+#              class: col-md-6
+#              type: sonata.block.service.text
+#              settings:
+#                  content: >
+#                        <h3>Bienvenue dans GIM !</h3>
+          - position: top
+            class: col-md-12
+            type: sonata.block.service.stat
+        groups:
+          Conventions:
+            on_top:          false
+            icon: '<i class="fa fa-book"></i>'
+            roles: [ROLE_ADMIN, ROLE_GESTION_CONVENTION, ROLE_CONV_ELABORATION, ROLE_CONV_SUIVI_FINANCIER, ROLE_CONV_SUIVI_EXECUTION, ROLE_CONV_CONSULTATION]
+            items:
+              - route:        admin_app_convention_list
+                label:        All conventions
+              - route:        convention_liste_suivis
+                label:        Conventions suivies
+              - route:        convention_liste_unread
+                label:        Liste des conventions unread
+          Sessions:
+            on_top:          false
+            icon: '<i class="fa fa-dot-circle-o"></i>'
+            roles: [ROLE_ADMIN, ROLE_GESTION_CONVENTION, ROLE_CONV_ELABORATION, ROLE_CONV_SUIVI_FINANCIER, ROLE_CONV_SUIVI_EXECUTION, ROLE_CONV_CONSULTATION]
+          Projets:
+            on_top:          false
+            icon: '<i class="fa fa-industry"></i>'
+            roles: [ROLE_ADMIN]
+          Partenaires:
+            on_top:          true
+            icon: '<i class="fa fa-user"></i>'
+            roles: [ROLE_ADMIN]
+#          Situations et Stats:
+#            roles: [ROLE_ADMIN, ROLE_SITUATIONS_STATS_CONSULTATION]
+#            icon: '<i class="fa fa-line-chart"></i>'
+#            items:
+#              - route:        situations
+#                label:        Situations
+#              - route:        stats
+#                label:        Statistiques
+          OrganeGouvernances:
+            on_top:          true
+            icon: '<i class="fa fa-compass"></i>'
+            roles: [ROLE_ADMIN]
+          Contacts:
+            on_top:          true
+            icon: '<i class="fa fa-address-card"></i>'
+            roles: [ROLE_ADMIN]
+          Situations:
+            on_top:          true
+            roles: [ROLE_ADMIN, ROLE_SITUATIONS_CONSULTATION]
+            icon: '<i class="fa fa-table"></i>'
+            items:
+              - route:        situations
+                label:        Situations
+          Stats:
+            on_top:          true
+            roles: [ROLE_ADMIN, ROLE_STATS_CONSULTATION]
+            icon: '<i class="fa fa-line-chart"></i>'
+            items:
+              - route:        stats
+                label:        Statistiques
+          Référentiel:
+            icon: '<i class="fa fa-cogs"></i>'
+            roles: [ROLE_ADMIN]
+          Espace Administrateurs:
+            icon: '<i class="fa fa-user"></i>'
+            roles: [ROLE_ADMIN]
+          Trash:
+            on_top:          true
+            roles: [ROLE_SUPER_ADMIN]
+            icon: '<i class="fa fa-trash"></i>'
+            items:
+              - route:        trash_conventions
+                label:        Trash
+#          Paramètres:
+#            on_top:          true
+#            icon: '<i class="fa fa-cog"></i>'
+#            items:
+#              - route:        admin_app_settings_list
+##                route_params: { id: 1 }
+#                label:        Paramètres
+          admin:
+            icon: '<i class="fa fa-folder"></i>'
+            roles: [ROLE_ADMIN]
+    assets:
+      extra_javascripts:
+        - libs/ckeditor/ckeditor.js
+        - bundles/sonataformatter/vendor/markitup-markitup/markitup/jquery.markitup.js
+        - bundles/sonataformatter/markitup/sets/markdown/set.js
+        - bundles/sonataformatter/markitup/sets/html/set.js
+        - bundles/sonataformatter/markitup/sets/textile/set.js
+
+      extra_stylesheets:
+        - css/sonata_admin_custom.css
+        - bundles/sonataformatter/markitup/skins/sonata/style.css
+        - bundles/sonataformatter/markitup/sets/markdown/style.css
+        - bundles/sonataformatter/markitup/sets/html/style.css
+        - bundles/sonataformatter/markitup/sets/textile/style.css
+        - css/my-skin-blue30.css
+
+        - css/sonata_admin_custom_rtl.css
+#        - assets/css/AdminLTE.min.css
+#        - assets/css/skins/_all-skins.min.css
+        - assets/css/admin-custom.css
+        - assets/css/bootstrap-rtl.min.css
+#        - //cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css
+        - assets/css/admin-rtl.css
+        - assets/css/admin-skin-black.min.rtl.css
+        - assets/css/admin-styles.rtl.css
+        - assets/css/admin-layout.rtl.css
+        - assets/css/admin-tree.rtl.css
+        - assets/css/admin-custom.rtl.css
+        - assets/fonts/samim-font-master/dist/font-face.css
+#        - https://cdn.rawgit.com/rastikerdar/samim-font/v2.0.1/dist/font-face.css
+
+    templates:
+      layout:         'bundles/SonataAdminBundle/my_standard_layout.html.twig'
+#      edit:           App/templates/bundles/SonataAdminBundle/edit.html.twig
+      user_block:     'bundles/SonataAdminBundle/user_block.html.twig'
+#      short_object_description: App/templates/bundles/SonataAdminBundle/short-object-description.html.twig
+    options:
+      skin: 'skin-blue'
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.formatter.block.formatter:
+        # Enable sonata.block.service.stat
+        sonata.block.service.stat: ~

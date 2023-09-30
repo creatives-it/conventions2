@@ -1,0 +1,66 @@
+{% extends 'page.html.twig' %}
+
+{% block titre_page %}{{ 'Projet'|trans }}{% endblock %}
+{% block titre %}{{ 'Projet'|trans }}: {{ projet.objet }}{% endblock %}
+{% block contenu %}
+    <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="box box-success">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ ivory_google_map(map) }}
+                                {{ ivory_google_api([map]) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mt-4 pt-2">
+
+                                <table class="table table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="col">{{ 'Objet'|trans}}</th>
+                                        <td>{{ projet.objet }}</td>
+                                        <th scope="col">{{ 'Numero'|trans}}</th>
+                                        <td>{{ projet.numero }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">{{ 'Date Demarrage'|trans}}</th>
+                                        <td>{{ projet.dateDemarrage is empty ? "": projet.dateDemarrage|date('Y/m/d') }}</td>
+                                        <th scope="col">{{ 'Date Achevement'|trans}}</th>
+                                        <td>{{ projet.dateAchevement is empty ? "": projet.dateAchevement|date('Y/m/d') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">{{ 'Lieu'|trans}}</th>
+                                        <td>{{ projet.lieu }}</td>
+                                        <th scope="col">{{ 'Duree'|trans}}</th>
+                                        <td>{{ projet.duree }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">{{ 'Contribution Region'|trans}}</th>
+                                        <td>{{ projet.contributionRegion|number_format(0,'.',',') }}</td>
+                                        <th scope="col">{{ 'Contribution Partenaire'|trans}}</th>
+                                        <td>{{ projet.contributionPartenaire }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">{{ 'Description'|trans}}</th>
+                                        <td colspan="3">{{ projet.description|raw }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div><!--end col-->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+    </div>
+{% endblock %}

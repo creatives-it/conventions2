@@ -1,0 +1,8 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^sse\.cnej\.ma$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sse\.cnej\.ma$
+RewriteRule ^/?$ "http\:\/\/sse\.cnej\.ma\/public" [R=301,L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+

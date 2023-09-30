@@ -1,0 +1,5 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('email') %}
+    <a class="btn btn-sm btn-info edit_link" title="Email"  style="display: inline-block" href="{{ admin.generateObjectUrl('email', object) }}">
+        <i class="fa fa-mail-reply"></i> Email
+    </a>
+{% endif %}

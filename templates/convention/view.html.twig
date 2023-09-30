@@ -1,0 +1,299 @@
+{% extends 'page.html.twig' %}
+
+{% block titre_page %}{{ 'Convention'|trans }}{% endblock %}
+{% block titre %}
+	{{ 'Convention'|trans }}
+{% endblock %}
+{% block contenu %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="box box-success">
+
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th scope="col">{{ 'Numero'|trans}}</th>
+                                    <td>{{ convention.numero }}</td>
+                                    <th scope="col">{{ 'Date Signature'|trans}}</th>
+                                    <td>{{ convention.dateSignature is empty ? "": convention.dateSignature|date('Y/m/d') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Objet Convention'|trans}}</th>
+                                    <td>{{ convention.objetConvention }}</td>
+                                    <th scope="col">{{ 'Date Session'|trans}}</th>
+                                    <td>{{ convention.dateSessionApprobation is empty ? "": convention.dateSessionApprobation|date('Y/m/d') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Type Convention'|trans}}</th>
+                                    <td>{{ convention.typeConvention }}</td>
+                                    <th scope="col">{{ 'Nature Convention'|trans}}</th>
+                                    <td>{{ convention.natureConvention }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Montant Convention'|trans}}</th>
+                                    <td>{{ convention.montantConvention|number_format(0,',','.') }}</td>
+                                    <th scope="col">{{ 'Localisation'|trans}}</th>
+                                    <td>{{ convention.localisation }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Stade'|trans}}</th>
+                                    <td>{{ convention.stade }}</td>
+                                    <th scope="col">{{ 'Statut Convention'|trans}}</th>
+                                    <td>{{ convention.statutConvention }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Secteur'|trans}}</th>
+                                    <td>{{ convention.secteur }}</td>
+                                    <th scope="col">{{ 'Maitre Ouvrage'|trans}}</th>
+                                    <td>{{ convention.maitreOuvrage }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Partie Contractantes'|trans}}</th>
+                                    <td>{{ convention.partieContractantes | join('\n') | nl2br }}</td>
+                                    <th scope="col">{{ 'Duree'|trans}}</th>
+                                    <td>{{ convention.duree }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Vise'|trans}}</th>
+                                    <td>{{ convention.vise }}</td>
+                                    <th scope="col">{{ 'Date Visa'|trans}}</th>
+                                    <td>{{ convention.dateVisa is empty ? "": convention.dateVisa|date('Y/m/d') }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col">{{ 'Entite Suivi Execution'|trans}}</th>
+                                    <td>{{ convention.entiteSuiviExecution }}</td>
+                                    <th scope="col">{{ 'Organes Suivi'|trans}}</th>
+                                    <td>{{ convention.organesSuivi }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Is Avenant'|trans}}</th>
+                                    <td>{{ convention.isAvenant }}</td>
+                                    <th scope="col">{{ 'Avenant A'|trans}}</th>
+                                    <td>{{ convention.avenantA }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Consistance'|trans}}</th>
+                                    <td>{{ convention.consistance|raw }}</td>
+                                    <th scope="col">{{ 'Objectifs Convention'|trans}}</th>
+                                    <td>{{ convention.objectifsConvention|raw }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Thematiques'|trans}}</th>
+                                    <td>{{ convention.thematiques|join(' ، ') }}</td>
+                                    <th scope="col">{{ 'Avenants'|trans}}</th>
+                                    <td>{{ convention.avenants|join(' ، ') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">{{ 'Observation2'|trans}}</th>
+                                    <td>{{ convention.observations|raw }}
+                                        {# {% if convention.observation1 is not empty %}
+                                           {% if convention.observations is not empty %}<br/>{% endif %}
+                                           {{ 'Statut Convention'|trans }}: {{ convention.observation1|raw }}
+                                        {% endif %} #}
+                                    </td>
+                                    <th scope="col">{{ 'Observation1'|trans}}</th>
+                                    <td>{{ convention.observation1|raw }}
+                
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+
+                        </div><!--end col-->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'conventionDocuments'|trans }}</h3>
+                            <table class="table table-striped">
+                                <tbody>
+                                {% for document in convention.conventionDocuments if document.media.providerName == "sonata.media.provider.file" %}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ path('sonata_media_download', {'id': document.media|sonata_urlsafeid }) }}" target="_blank">
+                                                <span class="glyphicon glyphicon-download"></span> {{ document.title is empty ? document.media.name : document.title }}</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'Photos'|trans }}</h3>
+                                {% for document in convention.conventionDocuments if document.media.providerName == "sonata.media.provider.image" %}
+                                    <div class="col-md-6" style="margin-bottom: 10px;">
+                                        <div class="thumbnail">
+                                            <img src="/conventions{% path document.media, 'big' %}" class="img-rounded" alt="{{ document.title is empty ? document.media.name : document.title }}">
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if convention.conventionEngagements is not empty %}
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'conventionContributions'|trans }}</h3>
+                        </div>
+
+                        <div class="col-md-6 mt-4 pt-2">
+                            {{ render(controller('App\\Controller\\ChartsController::graph801', {'id': convention.id})) }}
+                        </div>
+                        <div class="col-md-6 mt-4 pt-2">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'Annee'|trans }}</th>
+                                    <th>{{ 'Montant Programme'|trans }}</th>
+                                    <th>{{ 'Montant Realise'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for k,v in engagements %}
+                                    <tr>
+                                        <td>{{ k }}</td>
+                                        <td align="right">{{ v.1|number_format(0,',','.') }}</td>
+                                        <td align="right">{{ v.2|number_format(0,',','.') }}</td>
+                                    </tr>
+                                {% endfor %}{##}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr />
+
+                    {% for partenaire in convention.partieContractantes %}
+                    <div class="row">
+                        <div class="col-md-6 mt-4 pt-2">
+                            {{ render(controller('App\\Controller\\ChartsController::graph801a', {'id': convention.id, 'idp': partenaire.id})) }}
+                        </div>
+                        <div class="col-md-6 mt-4 pt-2">
+                            {{ render(controller('App\\Controller\\ConventionAdminController::tableParticipationsConvention', { 'id': convention.id, 'idp': partenaire.id, '_sonata_admin':'admin.convention' })) }}
+                        </div>
+                    </div>
+                        <hr />
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'conventionEngagements'|trans }}</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'Partenaire'|trans }}</th>
+                                    <th>{{ 'Annee'|trans }}</th>
+                                    <th>{{ 'Montant Programme'|trans }}</th>
+                                    <th>{{ 'Nature Contribution'|trans }}</th>
+                                    <th>{{ 'Observation'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for engagement in convention.conventionEngagements %}
+                                    <tr>
+                                        <td>{{ engagement.partenaire }}</td>
+                                        <td>{{ engagement.annee }}</td>
+                                        <td align="right">{{ engagement.montantProgramme|number_format(0,',','.') }}</td>
+                                        <td>{{ engagement.natureContribution }}</td>
+                                        <td>{{ engagement.observation }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'conventionContributions'|trans }}</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'Partenaire'|trans }}</th>
+                                    <th>{{ 'Annee'|trans }}</th>
+                                    <th>{{ 'Montant'|trans }}</th>
+                                    <th>{{ 'Nature Contribution'|trans }}</th>
+                                    <th>{{ 'Observation'|trans }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for contribution in convention.conventionContributions %}
+                                    <tr>
+                                        <td>{{ contribution.partenaire }}</td>
+                                        <td>{{ contribution.annee }}</td>
+                                        <td>{{ contribution.montant|number_format(0,',','.') }}</td>
+                                        <td>{{ contribution.natureContribution }}</td>
+                                        <td>{{ contribution.observation }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 mt-4 pt-2">
+                <div class="box box-success">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 pt-2">
+                            <h3 class="bg-success">{{ 'Emplacement'|trans }}</h3>
+                            {{ convention.emplacement|raw }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

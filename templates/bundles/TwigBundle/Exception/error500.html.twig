@@ -1,0 +1,16 @@
+{% extends 'page_error.html.twig' %}
+
+{% block titre %}
+    Erreur interne au serveur ou serveur saturé.
+{% endblock %}
+
+{% block contenu %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Erreur 500:  <a href="{{ path('homepage') }}">Retour à la page d'accueil</a>.
+    </p>
+{% endblock %}

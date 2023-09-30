@@ -1,0 +1,5 @@
+{% if  (object.seanceOuverturePlis() is not empty) and admin.isGranted('VIEW', object) and admin.hasRoute('envoi_resultat') %}
+<a class="btn btn-sm btn-btn14 edit_link" title="Envois aux soumissionnaires"  style="display: inline-block" href="{{ admin.generateObjectUrl('envoi_resultat', object) }}">
+    <i class="fa fa-file-text-o"></i> Envois Soum
+</a>
+{% endif %}

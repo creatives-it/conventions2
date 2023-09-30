@@ -1,0 +1,85 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style >
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+        }
+        h1, h2, h3, h4 {
+            font-family: Verdana, Geneva, sans-serif;
+            page-break-after: avoid;
+        }
+        h3 { font-size: 15px; }
+        h4 { font-size: 13px; }
+        .blue { color: #0000cc;}
+        .red { color: #a90e09;}
+        .ml-1 { margin-left:25px;}
+        .mr-1 { margin-right:25px;}
+        .ml-2 { margin-left:50px;}
+        .mr-2 { margin-right:50px;}
+        table {
+            page-break-inside: auto;
+        }
+        .table {
+            /*font-family:  Arial, Helvetica, sans-serif;*/
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .table60 { width: 60%; }
+        table.center {
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .table tr:nth-child(even){background-color: #f2f2f2;}
+        .table tr:hover {background-color: #ddd;}
+        .table th {
+            border: 1px solid #808080;
+            padding: 2px 6px;
+            text-align: left;
+            background-color: #DCDCDC;/*gray(#D3D3D3; #C0C0C0; #A9A9A9; #808080; #696969); rgba(29,150,178,1) ; #4CAF50;*/
+            color: black;
+        }
+        .table td {
+            border: 1px solid #808080;
+            padding: 2px;
+        }
+        .page-break {
+            overflow: hidden;
+            page-break-before: always;
+        }
+        @page {
+            margin: 110px 0 25px 0;
+        }
+        /* La position fixed permet de placer les éléments sur toutes les pages
+        * du document pdf, le reste n'est que décoration */
+        #header {
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            color: #000;
+            background-color: #fff;
+            text-align: center;
+            top: -100px;
+            border-bottom: black;
+            height: 100px;
+        }
+        #footer {
+            position: fixed;
+            left: 25px;
+            right: 25px;
+            color: #000;
+            background-color: #fff;
+            text-align: center;
+            font-size: 8px;
+            bottom: -25px;
+            height: 50px;
+            border-top-style: solid;
+            border-top-color: #0c5460;
+        }
+        #footer .page-number:after {
+            content: counter(page);
+        }
+        #content, .div-content {
+            margin: 25px;
+            margin-top: 10px;
+        }
+    </style>

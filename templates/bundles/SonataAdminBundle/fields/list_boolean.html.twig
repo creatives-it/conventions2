@@ -1,0 +1,12 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+{% block field %}
+    {% if (value is empty) %}
+        {{ value }}
+    {% elseif (value) or (value is same as 1) %}
+        <span class="label label-success">{{ 'boolean.yes'|trans }}</span>
+    {% elseif (not(value)) or (value is same as 0) %}
+        <span class="label label-danger">{{ 'boolean.no'|trans }}</span>
+    {% else %}
+        {{ value }}
+    {% endif %}
+{% endblock %}

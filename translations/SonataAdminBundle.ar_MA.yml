@@ -1,0 +1,60 @@
+Admin:  'تدبير الإتفاقيات'
+admin:  إدارة
+open.new_tab: 	Ouvrir dans un nouvel onglet
+confirm_modal.content:  confirm_modal.content
+confirm_modal.action:  confirm_modal.action
+link_action_view: 	معاينة
+more:    أكثر
+less:    أقل
+toggle_navigation: 	toggle_navigation
+title_create: إضافة
+btn_create_and_edit_again: إضافة
+btn_create_and_return_to_list:  إضافة والعودة إلى القائمة
+btn_create_and_return_to_view:  إضافة ثم معاينة
+btn_update_and_return_to_view:  حفظ ثم معاينة
+btn_create_and_create_a_new_one: 	حفظ وإضافة أخرى
+no_result:    لا نتائج
+link_action_create:   إضافة جديدة
+label_type_contains:    يحتوي
+label_type_not_contains:    لا يحتوي
+label_type_equals:    يساوي
+btn_filter:   بحث
+btn_view:   معاينة
+link_reset_filter:    إعادة تعيين
+confirm_exit:   لديك تغييرات غير محفوظة.
+noscript_warning:   noscript_warning
+link_breadcrumb_dashboard:    <i class="fa fa-home"></i>
+search_placeholder:   بحث
+title_show: عرض
+link_filters: البحث
+flash_success_position_updated: تم تعديل الترتيب
+#===================================================================
+
+sonata.media.provider.image:  الصورة
+sonata.media.provider.file:   الملف الإلكتروني
+Media:  الملف الإلكتروني
+Référentiel: 	المراجع
+Administration: 	المراجع
+Situations: 	بيانات
+Espace Administrateurs:    الإدارة
+Statistiques:    إحصاءيات
+Stats:  إحصاءيات
+Paramètres: 	إعداديات
+Groupes d'utilisateurs: 	مجموعات المستخدمين
+Dossiers: 	الملفات
+Situations et Stats: 	بيانات وإحصاءيات
+#===================================================================
+
+Partenaires:  الشركاء
+Conventions:  الإتفاقيات
+OrganeGouvernances:    أجهزة التتبع
+Contacts: لائحة التواصل
+flash_batch_archive_success:  تم الحفظ بنجاح
+flash_batch_desarchive_success:  تم إلغاء الحفظ بنجاح
+Conventions recouvrées avec succès !: تم استرجاع الإتفاقية بنجاح
+Trash: المحذوفات
+Projets: المشاريع
+Sessions: الدورات
+Conventions suivies: لائحة التتبع
+All conventions: لائحة الإتفاقيات
+Liste des conventions unread: الإتفاقيات الجديدة

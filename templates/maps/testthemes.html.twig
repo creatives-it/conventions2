@@ -1,0 +1,42 @@
+{% extends 'bundles/SonataAdminBundle/my_standard_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/highcharts/css/highcharts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/my-highcharts.css') }}">
+    <style>
+        .loading {
+            margin-top: 10em;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    {#    {{ parent() }}#}
+    {#    <script src="https://code.highcharts.com/maps/highmaps.js"></script>#}
+    <script src="https://code.highcharts.com/maps/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/modules/marker-clusters.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    {#    <script src="https://code.highcharts.com/maps/modules/data.js"></script>#}
+    <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
+{% endblock %}
+
+{% block sonata_admin_content %}
+    {#<div class="row">
+<div class="col-md-6">
+    {{ render(controller('App\\Controller\\MapsController::testTheme',{'k': 0 })) }}
+</div>{##}
+{#<div clas"col-md-6">
+{{ render(controller('App\\Controller\\MapsController::testTheme',{'k': 1 })) }}
+</div>#}
+{% for k in 0..76 %}
+    <div class="col-md-6">
+        {{ render(controller('App\\Controller\\MapsController::testTheme',{'k': k })) }}
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,5 @@
+{% if admin.isGranted('VIEW', object) and admin.hasRoute('pdf') %}
+<a class="btn btn-sm btn-success edit_link" title="Document PDF"  style="display: inline-block" href="{{ admin.generateObjectUrl('pdf', object) }}">
+    <i class="fa fa-file-pdf-o"></i> PDF
+</a>
+{% endif %}

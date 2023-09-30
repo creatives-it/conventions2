@@ -1,0 +1,16 @@
+{% extends 'page_error.html.twig' %}
+
+{% block titre %}
+    Service indisponible.
+{% endblock %}
+
+{% block contenu %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Erreur 503:  <a href="{{ path('homepage') }}">Retour à la page d'accueil</a>.
+    </p>
+{% endblock %}

@@ -1,0 +1,375 @@
+SITE_NAME: 'تدبير الإتفاقيات'
+
+Action: العمليات
+Active:   مفعلة
+Adresse:   العنوان
+Autres infos:    معلومات أخرى
+Changer mot de passe:   تغيير كلمة المرور
+Compte:   الحساب
+create:  إضافة
+Data:    معلومات
+Date::  التاريخ
+Day:    اليوم
+Date Debut: تاريخ الإبتداء
+Date Fin: تاريخ النهاية
+Description:    الوصف
+Details: التفاصيل
+DH: درهم
+Déconnexion:  الخروج
+Editer: تعديل
+Email: 	البريد الإلكتروني
+Enabled:    مفعل
+Entity:    الوحدة
+Fax: 	فاكس
+Filtrer: بحث
+Groupe: 	المجموعة
+Gsm: 	المحمول
+Gérer les utilisateurs:   تدبير المستخدمين
+Id Entity:    Id Entité
+Identification:   تعريف
+Infos en arabe:    معلومات بالعربية
+Initialiser filtres: مسح
+Left date:    بعد
+Left number: أكبر من
+Libelle: 	الإسم
+Locked:    مقفل
+Log List: 	تتبع التغييرات
+Logged At: 	تاريخ
+MDH: مليون درهم
+mDh: م.د
+Media:  الملف الإلكتروني
+Month:    شهر
+Name:    الإسم
+name:    إسم
+Nom famille:    الإسم العائلي
+Nom:    إسم
+nom:    الإسم
+Nombre: العدد
+nombre: عدد
+Numero: 	رقم
+Object Class:    Classe
+Object Id:    رقم
+Observation: 	ملاحظة
+Observations: 	ملاحظات
+Parent:   الارتباط
+prenom:    إسم شخصي
+Prenom:    الإسم الشخصي
+Recherche: البحث
+remove: 	حذف
+Renseignements:   معلومات
+Right date:    قبل
+Right number: 	أصغر من
+Settings Create:    إعداد جديد
+Settings List:    الإعدادات
+Settings:    الإعدادات
+Situations:  بيانات
+sonata.media.provider.file:   الملف الإلكتروني
+sonata.media.provider.image:  الصورة
+Statistiques:  إحصاءيات
+Stats:  إحصاءيات
+Tel: 	هاتف
+Title:    العنوان
+Total: المجموع
+Traçabilité: 	تتبع التغييرات
+Type:    نوع
+update: 	تعديل
+Username: 	حساب
+Value:    القيمة
+Version:    النسخة
+Voir: معاينة
+Year:    السنة
+boolean.yes_or_no:  نعم\لا
+boolean.yes:  نعم
+boolean.no: لا
+Lancer : 	إرسال
+Initialiser les champs :	إفراغ البيانات
+Télécharger: تحميل
+
+#=====================================================================
+A la date du: بتاريخ
+Annee:  السنة
+Avenant A:   ملحق للإتفاقية
+Avenant:    الملحق
+Branche Create: إضافة قطاع
+Branche List: القطاعات
+Branche: القطاع
+Branches: القطاعات
+Calendar:   المفكرة
+Consistance:   المحتوى
+Contribution: المساهمة
+convention et avenant: إتفاقية وملحق
+Convention List:   الإتفاقيات
+Convention Create: إضافة إتفاقية
+Convention Versements: الإيداعات
+Convention:   الإتفاقية
+ConventionContribution: تنفيذ الإلتزامات
+conventionContributions:    تنفيذ الإلتزامات
+conventionStades:    تطور الوضعية
+conventionSuiviExecutions:    تتبع الإنجاز
+ConventionDocument:   الوثيقة
+conventionDocuments:    الوثائق
+ConventionEngagement:   الإلتزام
+conventionEngagements:    الإلتزامات
+Conventions:  الإتفاقيات
+conventionSignatures: توقيع الأطراف المتعاقدة
+ConventionVersement: الإيداع
+conventionVersements:   الإيداعات
+Date Courrier Arrive: تاريخ المراسلة الواردة من التوقيع
+Date Deliberation:   تاريخ المداولة
+Date Prevue:  التاريخ
+Date Reception Convention: تاريخ التوصل بالاتفاقية
+Date Session Approbation:   تاريخ دورة المصادقة
+Date Session:   تاريخ الدورة
+Date Signature:   تاريخ التوقيع
+Date Transmission Entite Suivi Execution: تاريخ الإحالة على القسم المعني
+Date Transmission Pour Signature: تاريخ الإحالة على التوقيع
+Date Transmission Pour Visa:  تاريخ الإحالة على التأشير
+Date Versement: تاريخ الإيداع
+Date Visa:   تاريخ التأشير
+Duree:   المدة
+Entite Create: إضافة قسم\مصلحة
+Entite List:  الأقسام والمصالح
+Entite Suivi Execution:   القسم المكلف بالتتبع
+Entite:   الأقسام والمصالح
+Entites:  الأقسام والمصالح
+Intitule: التسمية
+Is Avenant:   ملحق
+Is Signee:   تم التوقيع عليها
+Localisation: التوطين
+Localisations: التوطين
+Localisation List: التوطين الجغرافي
+Localisation Create: إضافة جديد
+Maitre Ouvrage:   المكلف بالتنفيذ
+Modalite Financement: إجراءات التمويل
+Montant Convention:   المبلغ الإجمالي
+Montant Programme:  المبلغ المبرمج
+Montant Realise:  المبلغ المنفذ
+Montant:  المبلغ
+Nature Contribution Create: إضافة طبيعة مساهمة
+Nature Contribution List: طبائع المساهمات
+Nature Contribution:  طبيعة المساهمة
+Nature Convention Create: إضافة طبيعة إتفاقية
+Nature Convention List: طبائع الإتفاقيات
+Nature Convention:   طبيعة الإتفاقية
+NatureContribution:   طبيعة المساهمة
+NatureContributions:  طبائع المساهمات
+NatureConvention:   طبيعة الإتفاقية
+NatureConventions:  طبائع الإتفاقيات
+Nombre Exemplaire Originaux: عدد النظائر الأصلية
+Numero An:  عدد
+Numero Courrier Arrive: رقم المراسلة الواردة
+Numero Decision:  رقم المقرر
+Numero Envoi Depart: رقم المراسلة الصادرة
+Objectifs Convention:   أهداف الإتفاقية
+Objet Convention:   موضوع الإتفاقية
+Observations Visa: ملاحظات حول التأشير
+Organes Suivi:  أجهزة التتبع
+Partenaire Create: إضافة شريك
+Partenaire List: الشركاء
+Partenaire:   الشريك
+partenaire: شريك
+Partenaires:  الشركاء
+Partie Contractantes:   الأطراف المتعاقدة
+Rappel1: تذكير رقم 1
+Rappel2: تذكير رقم 2
+Receptionnee Par: إسم المتسلم
+Secteur Create: إضافة مجال
+Secteur List: المجالات
+Secteur:   المجال
+Secteurs: المجالات
+Session approbation:   دورة المصادقة
+Session Approbation:   دورة المصادقة
+Session:    أشغال الدورة
+Signature:  التوقيع
+Stade Create: إضافة وضعية
+Stade List: وضعيات الإتفاقيات
+Stade:   الوضعية
+Stades: الوضعيات
+Statut Convention Create: إضافة حالة إتفاقية
+Statut Convention List: حالات الإتفاقيات
+Statut Convention:   حالة الإتفاقية
+Statut:   الحالة
+StatutConvention:   حالة الإتفاقية
+StatutConventions:  الحالات
+Suivi:    التتبع
+Thematique Create:  إضافة موضوع
+Thematique List: المواضيع
+Thematique: الموضوع
+Thematiques:  المواضيع
+Type Convention Create: إضافة طبيعة مساهمة
+Type Convention List: أنواع الإتفاقيات
+Type Convention:   نوع الإتفاقية
+TypeConvention:   نوع الإتفاقية
+TypeConventions:  أنواع الإتفاقيات
+Visa:   التأشيرة
+Vise:   تم التأشير عليها
+Observation1: ملاحظات حول إعداد الإتفاقية
+Observation2: ملاحظات حول التنفيذ
+graph20: 'تطور عدد الإتفاقيات حسب سنة الدورة'
+graph30: "توزيع الإتفاقيات حسب القطاع"
+graph31: "توزيع الإتفاقيات حسب الوضعية"
+graph32: "توزيع الإتفاقيات حسب التوطين"
+
+Situation globale des conventions: الجدول العام للإتفاقيات
+situationA1: الجدول العام للإتفاقيات
+situationAx1: جدول الإتفاقيات
+Fiche technique: البطاقة التقنية
+Document Signe: وثيقة الإتفاقية الموقعة
+
+Date:   التاريخ
+Organe Gouvernances:    أجهزة التتبع
+Decisions:    القرارات
+Taux Avancement:    نسبة تقدم الأشغال (%)
+Pieces Jointes:   المرفقات
+OrganeGouvernances:    أجهزة التتبع
+Organe Gouvernance List:  أجهزة التتبع
+Organe Gouvernance Create:  إضافة جهاز التتبع
+Gsm1: المحمول 1
+Gsm2: المحمول 2
+Whatsapp: الواتساب
+Contact List: لائحة التواصل
+Contact Create: إضافة جديدة
+Contacts: لائحة التواصل
+Membres: الأعضاء
+Document Planification List:  وثائق البرمجة والتخطيط
+Document Planification Create:  إضافة وثيقة
+Document Planifications:  وثائق البرمجة والتخطيط
+DocumentPlanifications:  وثائق البرمجة والتخطيط
+Domaine Competence:  مجال الإختصاص
+DomaineCompetences:  مجالات الإختصاصات
+Domaine Competence List:  مجالات الإختصاصات
+Domaine Competence Create: إضافة مجال
+Est Signee Par Partenaires: توقيع الأطراف
+Delai Consomme Pour Visa: أجل التأشيرة
+Delai Attente Visa: انتظار التأشيرة منذ
+
+Situation a2: الإتفاقيات المحالة على وزارة الداخلية من أجل التأشيرة
+Situation a3: الإتفاقيات المحالة على الأطراف من أجل التوقيع
+Situation b1: الإلتزامات المالية لمجلس الجهة
+
+Signature des parties: توقيع الأطراف
+Delai Consomme Pour Signature: أجل التوقيع
+Delai Attente Signature: انتظار التوقيع منذ
+Partie: الطرف
+jour: يوم
+Type Session: نوع الدورة
+Type Session List: الدورات
+Type Session Create: إضافة نوع
+Session List: الدورات
+Session Create: إضافة دورة
+TypeSessions: أنواع الدورات
+Sessions: الدورات
+Montant Retard: المبلغ المتأخر
+Montant Retard Cumule: مجموع المتأخرات
+Attente Visa: في انتظار التأشيرة
+Attente Signature: في انتظار التوقيع
+Attente Signature Partenaires: في انتظار توقيع الأطراف
+Annee Engagement1: السنة الأولى
+Annee Engagement2: السنة الأخيرة
+Annees: السنوات
+Un partenaire du même nom est déjà enregistré: يوجد شريك بنفس الإسم
+Project: المشروع
+Contribution financiere Region dans le projet: المساهمة المالية للجهة في المشروع
+Montant Engagement Global Region: المساهمة الإجمالية للجهة
+Engagements programmes: الإلتزامات المبرمجة
+Engagements realises: الإلتزامات المنفذة
+Archived: في الحفظ
+Archiver: حفظ
+Desarchiver: إلغاء الحفظ
+Deleted At: تاريخ الحذف
+Conventions supprimees: الإتفاقيات المحذوفة
+Trash: المحذوفات
+Undelete: استرجاع
+Aucune convention supprimee: لا توجد إتفاقية محذوفة
+
+Objet:  الموضوع
+Montant Investissement: مبلغ الإستثمار
+Contribution Region: مساهمة الجهة
+Contribution Partenaire:  مساهمة الشركاء
+Lieu: التوطين الترابي
+Nature: طبيعة المشروع
+Phase:  الوضعية
+Axe: المحور
+Axe List: المحاور
+Axe Create: إضافة محور
+Projet Nature List: طبائع المشاريع
+Projet Nature Create: إضافة طبيعة مشروع
+Projet Phase List: وضعيات المشاريع
+Projet Phase Create: إضافة وضعية
+Date Demarrage: تاريخ الإنطلاق
+Date Achevement: تاريخ الإنتهاء
+Annee Programmation: سنة البرمجة
+Is Pdr: مشروع PDR
+Projets: المشاريع
+Projet List: لائحة المشاريع
+Projet Create: إضافة مشروع
+Axes: المحاور
+ProjetNatures: طبائع المشاريع
+ProjetPhases: وضعيات المشاريع
+Photos: الصور
+Projet: المشروع
+conventionEngagementRegions2: إلتزامات الجهة السنوية
+conventionEngagementRegions: إلتزامات المحاسبتية
+Engagement Programme: الإلتزامات المبرمجة
+Engagement Programme Excedent Annee Precedante: الإلتزامات المبرمجة في إطار فائض السنة الماضية
+Engagement Non Programme: الإلتزامات غير المبرمجة
+Engagement Realise: الإلتزامات المنفذة
+Associe: الشريك
+Mandat List:  الفترات الانتدابية
+Mandat Create: إضافة فترة انتدابية
+Mandat: 	الفترة الانتدابية
+Lieu Session: المقر
+Nbre Presents:  عدد الحضور
+Pieces jointes:  مرفقات
+Ordre du jour:  جدول الأعمال
+PV (word):  المحضر (word)
+PV (PDF): المحضر (pdf)
+Contenu:  المحتوى
+Conventions Texte: الإتفاقيات (محتوى)
+Conventions citees: الإتفاقيات المشار اليها
+Arretes:  المقررات
+Arretes Numero: عدد المقرر
+Arretes Objet Arrete: موضوع المقرر
+Objet Arrete: موضوع المقرر
+Arrete List:  المقررات
+Arrete Create:  إضافة مقرر
+Pourcent: النسبة المئوية
+conventionRepartitionLocalisations: التوزيع حسب الأقاليم
+Entite Consultantes: مسموح للإطلاع
+Type Entite: نوع
+Type Entite Create: إضافة نوع
+Root:  الأصل
+Children:  المرتبطون
+Emplacement: المكان
+arrete: مقرر
+projet: مشروع
+Suivre: تتبع
+Convention marquée comme suivie: تم تسجيل الإتفاقية في لائحة التتبع
+Suivi annulé: تمت إزالة الإتفاقية من لائحة التتبع
+Annuler suivi: إزالة التتبع
+Liste des conventions suivies: لائحة التتبع
+Nombre trouvé: العدد
+Liste des conventions unread: لائحة الإتفاقيات الجديدة
+Conventions unread: إتفاقيات جديدة
+nbreConventionsApprouves: إتفاقية مصادق عليها
+nbreConventionsCadreApprouves: إتفاقية إطار مصادق عليها
+nbreConventionsSpecifiquesApprouves: إتفاقية خاصة مصادق عليها
+nbreAvenantsApprouves: ملحق تعديلي مصادق عليه
+Conventions Necessitant Signature EtVisa: تستوجب التوقيع والتأشير
+nbreConventionsSignees: إتفاقية وملحق موقع
+nbreConventionsVisees: إتفاقية وملحق مأشر عليه
+nbreConventionsExecutesOuEncours: إتفاقية منفذة أو في طوره
+nbreConventionsEncoursSignature: إتفاقية في طور التوقيع
+nbreConventionsEncoursVisa: إتفاقية في طور التأشير
+Conventions Ne Necessitant pas Visa: إتفاقية لا حاجة للتأشيرة
+Conventions arretees: إتفاقية تم توقيفها
+move_down: إلى الأسفل
+move_up: إلى الأعلى
+
+Stade Elaboration: وضعية الإعداد
+Stade Elaboration List: وضعيات الإعداد
+Stade Elaboration Create: إضافة وضعية الإعداد
+Stade Execution: وضعية التنفيذ
+Stade Execution List: وضعيات التنفيذ
+Stade Execution Create: إضافة وضعية التنفيذ
+Avenants: الملحقات

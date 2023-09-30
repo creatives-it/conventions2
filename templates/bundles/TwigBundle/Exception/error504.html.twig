@@ -1,0 +1,16 @@
+{% extends 'page_error.html.twig' %}
+
+{% block titre %}
+    Trop de temps à la réponse.
+{% endblock %}
+
+{% block contenu %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Erreur 504:  <a href="{{ path('homepage') }}">Retour à la page d'accueil</a>.
+    </p>
+{% endblock %}

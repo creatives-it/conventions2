@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <img src="{{ asset('img/login_header.png') }}" class="img-fluid" alt="{{ SITE_NAME }}">
+                <div class="card-header">
+                    <h3>{% block titre %}Titre{% endblock %}</h3>
+                    <p>{% block soustitre %}{% endblock %}</p>
+                </div>
+                <div class="card-body">
+                    {% block contenu %}{% endblock %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends '@SonataAdmin/my_standard_layout.html.twig' %}
+
+{% block sonata_admin_content %}
+<div class="titre-tableau">
+    {{ 'Situation a2'|trans }} (منذ أكثر من {{ delaiMin }} أيام)
+</div>
+
+<div class="box-- box-primary--">
+    <div class="row">
+        <div class="table-responsive col-md-12">
+            <div class="box box-primary">
+                <table class="table table-striped table-hover table-bordered" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ 'Numero'|trans}}</th>
+                            <th scope="col">{{ 'Objet Convention'|trans}}</th>
+{#                            <th scope="col">{{ 'Date Signature'|trans}}</th>#}
+                            <th scope="col">{{ 'Date Session'|trans}}</th>
+                            <th scope="col">{{ 'Type Convention'|trans}}</th>
+{#                            <th scope="col">{{ 'Nature Convention'|trans}}</th>#}
+                            <th scope="col">{{ 'Montant Convention'|trans}}</th>
+                            <th scope="col">{{ 'Localisation'|trans}}</th>
+                            <th scope="col">{{ 'Stade'|trans}}</th>
+{#                            <th scope="col">{{ 'Statut Convention'|trans}}</th>#}
+                            <th scope="col">{{ 'Secteur'|trans}}</th>
+                            <th scope="col">{{ 'Maitre Ouvrage'|trans}}</th>
+                            <th scope="col">{{ 'Partie Contractantes'|trans}}</th>
+{#                            <th scope="col">{{ 'Duree'|trans}}</th>#}
+{#                            <th scope="col">{{ 'Vise'|trans}}</th>#}
+                            <th scope="col">{{ 'Date Transmission Pour Visa'|trans}}</th>
+                            <th scope="col">{{ 'Delai Attente Visa'|trans}}</th>
+{#                            <th scope="col">{{ 'Date Visa'|trans}}</th>#}
+{#                            <th scope="col">{{ 'Entite Suivi Execution'|trans}}</th>#}
+                            <th scope="col">{{ 'Organes Suivi'|trans}}</th>
+{#                            <th scope="col">{{ 'Is Avenant'|trans}}</th>#}
+{#                            <th scope="col">{{ 'Avenant A'|trans}}</th>#}
+{#                            <th scope="col">{{ 'Consistance'|trans}}</th>#}
+{#                            <th scope="col">{{ 'Objectifs Convention'|trans}}</th>#}
+{#                            <th scope="col">{{ 'Thematiques'|trans}}</th>#}
+{#                            <th scope="col">{{ 'Observations'|trans}}</th>#}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for convention in conventions %}
+                            <tr>
+                                <td align="center">{{ convention.numero }}</td>
+                                <td align="right"><a href="{{ path('admin_app_convention_view', {'id': convention.id}) }}">{{ convention.objetConvention }}</a></td>
+{#                                <td align="center">{{ convention.dateSignature is empty ? "": convention.dateSignature|date('Y/m/d') }}</td>#}
+                                <td align="center">{{ convention.dateSession is empty ? "": convention.dateSession|date('Y/m/d') }}</td>
+                                <td align="center">{{ convention.typeConvention }}</td>
+{#                                <td align="center">{{ convention.natureConvention }}</td>#}
+                                <td align="right">{{ convention.montantConvention|number_format(0,',','.') }}</td>
+                                <td align="center">{{ convention.localisations | join('\n') | nl2br }}</td>
+                                <td align="center">{{ convention.stade }}</td>
+{#                                <td align="center">{{ convention.statutConvention }}</td>#}
+                                <td align="center">{{ convention.secteur }}</td>
+                                <td align="center">{{ convention.maitreOuvrage }}</td>
+                                <td align="right">{{ convention.partieContractantes | join('\n') | nl2br }}</td>
+{#                                <td align="center">{{ convention.duree }}</td>#}
+{#                                <td align="center">{{ convention.vise }}</td>#}
+                                <td align="center">{{ convention.dateTransmissionPourVisa is empty ? "": convention.dateTransmissionPourVisa|date('Y/m/d') }}</td>
+                                <td align="center">{{ convention.delaiAttenteVisa|jours2mois }}</td>
+{#                                <td align="center">{{ convention.dateVisa is empty ? "": convention.dateVisa|date('Y/m/d') }}</td>#}
+{#                                <td align="center">{{ convention.entiteSuiviExecution }}</td>#}
+                                <td align="center">{{ convention.organesSuivi }}</td>
+
+{#                                <td align="center">{{ convention.isAvenant }}</td>#}
+{#                                <td align="center">{{ convention.avenantA }}</td>#}
+{#                                <td align="right">{{ convention.consistance }}</td>#}
+{#                                <td align="right">{{ convention.objectifsConvention }}</td>#}
+{#                                <td align="right">{{ convention.thematiques|join(' ، ') }}</td>#}
+                                {#<td align="right">{{ convention.observations }}
+                                    {% if convention.observation1 is not empty %}
+                                        {% if convention.observations is not empty %}<br/>{% endif %}
+                                        {{ 'Statut Convention'|trans }}: {{ convention.observation1 }}
+                                    {% endif %}
+                                </td>#}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <h4 align="center">{{ 'A la date du'|trans }} {{ "now"|date('d/m/Y') }}</h4>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

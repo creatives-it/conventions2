@@ -1,0 +1,5 @@
+{% if  admin.isGranted('VIEW', object) and admin.hasRoute('avis_publicite') %}
+<a class="btn btn-sm btn-btn83 edit_link" title="Avis de publicité"  style="display: inline-block" href="{{ admin.generateObjectUrl('avis_publicite', object) }}">
+    <i class="fa fa-file-word-o"></i> Avis
+</a>
+{% endif %}

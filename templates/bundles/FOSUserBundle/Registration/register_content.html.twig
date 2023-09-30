@@ -1,0 +1,57 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{#{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}#}
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <img src="{{ asset('img/login_header.png') }}" class="img-fluid" alt="{{ SITE_NAME }}">
+            <div class="card-header">
+                <h3>S'inscrire</h3>
+            </div>
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            <div class="card-body">
+                {#<div class="input-group form-group">#}
+                    {#<div class="input-group-prepend">#}
+                        {#<span class="input-group-text"><i class="fas fa-user"></i></span>#}
+                    {#</div>#}
+                    {#{{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder':'Nom', 'id': 'inputNom', 'name':'nom'}}) }}#}
+                {#</div>#}
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder':'Email', 'id': 'inputEmail', 'name':'email'}}) }}
+                </div>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder':'Compte', 'id': 'inputUsername', 'name':'username'}}) }}
+                </div>
+                <div class="input-group form-group">
+                    {#<div class="input-group-prepend">#}
+                        {#<span class="input-group-text"><i class="fas fa-key"></i></span>#}
+                    {#</div>#}
+                    {{ form_widget(form.plainPassword, {'attr': {'class': 'form-control', 'placeholder':'Mot de passe', 'id': 'inputPassword', 'name':'password'}}) }}
+                </div>
+                {#{{ form_row(form.agreeTerms) }}#}
+                {#<div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user-shield"></i></span>
+                    </div>
+                    {{ form_widget(form.roles, {'attr': {'class': 'form-control', 'placeholder':'Rôles', 'id': 'inputRoles', 'name':'roles'}}) }}
+                </div>#}
+                <div class="form-group" style="margin-top:155px">
+                    <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn float-right login_btn">
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>

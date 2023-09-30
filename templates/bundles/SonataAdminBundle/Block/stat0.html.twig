@@ -1,0 +1,196 @@
+{% extends sonata_block.templates.block_base %}
+{% block block %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+    <style>
+        .fc-day-grid-event .fc-content {
+            white-space: pre-wrap;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            var calendarEl = document.getElementById('calendar-holder');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                defaultView: 'dayGridMonth',
+                editable: true,
+                eventSources: [
+                    { url: "{{ path('fc_load_events') }}", method: "POST",  extraParams: {  filters: JSON.stringify({})    },
+                        failure: () => {    // alert("There was an error while fetching FullCalendar!");
+                        }, },
+                ],
+                header: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                },
+                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+                lazyFetching: true,
+                firstDay: 1,
+                eventTimeFormat: {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    meridiem: false
+                },
+                businessHours: {
+                    daysOfWeek: [ 1, 2, 3, 4, 5 ], // Monday - Thursday
+                    startTime: '9:00', // a start time (10am in this example)
+                    endTime: '18:00', // an end time (6pm in this example)
+                },
+                buttonText: {
+                    today:    "Aujourd'hui",
+                    month:    'Mois',
+                    week:     'Semaine',
+                    day:      'Jour',
+                    list:     'Liste'
+                },
+                //Set to True to show Calendar Week in seperate Row/Field of Calendar View
+                weekNumbers: false,
+                //Set to your Language to change the text, the first day of week etc acording to yout settings.
+                locale: 'fr',
+                timeZone: "UTC"
+            });
+            calendar.render();
+        });
+    </script>
+
+
+    <h2 class="sonata-feed-title"><i class="fa fa-dashboard"></i> Tableau de bord</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="titre-tableau">
+                {{ 'Statistiques'|trans }}
+            </div>
+            <div class="col-md-6">
+                <div class="info-box">
+                    <!-- Apply any bg-* class to to the icon to color it -->
+                    <span class="info-box-icon bg-green"><i class="fa fa-file"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Produits</span>
+                        <span class="info-box-number">77{#{{ render(controller('App\\Controller\\DefaultController::nbreTotalProduits')) }}#}</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-box">
+                    <!-- Apply any bg-* class to to the icon to color it -->
+                    <span class="info-box-icon bg-yellow"><i class="fa fa-money"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total des montants</span>
+                        <span class="info-box-number">77.777,77 {#{{ render(controller('App\\Controller\\DefaultController::montantTotalProduits')) }}#} MDH</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-box">
+                    <!-- Apply any bg-* class to to the icon to color it -->
+                    <span class="info-box-icon bg-aqua"><i class="fa fa-book"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Contrats</span>
+                        <span class="info-box-number">99</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-box">
+                    <!-- Apply any bg-* class to to the icon to color it -->
+                    <span class="info-box-icon bg-red"><i class="fa fa-credit-card"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Motants des commandes</span>
+                        <span class="info-box-number">99.999,99 MDH</span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-file"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Fournisseurs</span>
+                        <span class="info-box-number">88</span>
+                        <!-- The progress section is optional -->
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                            70% des fournisseurs sont actifs
+                        </span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-box bg-yellow">
+                    <span class="info-box-icon"><i class="fa fa-money"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total des ventes</span>
+                        <span class="info-box-number">88.888,88 MDH</span>
+                        <!-- The progress section is optional -->
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 50%"></div>
+                        </div>
+                        <span class="progress-description">
+                            50% réalisées dans les délais
+                        </span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon"><i class="fa fa-book"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Contrats</span>
+                        <span class="info-box-number">66{#{{ render(controller('App\\Controller\\DefaultController::nbreTotalContrats')) }}#}</span>
+                        <!-- The progress section is optional -->
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 50%"></div>
+                        </div>
+                        <span class="progress-description">
+                            Taux de réalisation = 50%
+                        </span>
+                    </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+            </div>
+
+            <div class="col-md-6">
+            <div class="info-box bg-red">
+                <span class="info-box-icon"><i class="fa fa-credit-card"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Motants des recettes</span>
+                    <span class="info-box-number">555{#{{ render(controller('App\\Controller\\DefaultController::montantTotalDecomptes')) }}#} MDH</span>
+                    <!-- The progress section is optional -->
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description">
+                        Taux d'évolution  = 60% en 2020
+                    </span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+
+        </div>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="titre-tableau">
+                {{ 'Calendrier'|trans }}
+            </div>
+            <div id="calendar-holder"></div>
+        </div>
+    </div>
+
+{% endblock %}

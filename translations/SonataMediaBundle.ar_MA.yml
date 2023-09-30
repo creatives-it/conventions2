@@ -1,0 +1,24 @@
+title.media_preview: 	معاينة
+label.size: 	الحجم
+label.content_type: 	نوع المحتوى
+label.cdn: 	CDN
+label.flushed_at: 	تاريخ الافراغ
+label.protected_download_url: 	العنوان المحمي
+label.protected_download_url_notice: 	تنبيه
+description.roles_download_strategy:    'Le média peut être récupéré par les utilisateurs avec une des permissions suivantes : %roles%'
+media: 	الملف الالكتروني
+form.label_name: 	الإسم
+form.label_enabled: 	مفعل
+form.label_author_name: 	المؤلف
+form.label_cdn_is_flushable: 	À rafraîchir sur le CDN
+form.label_description: 	الوصف
+form.label_copyright: 	حقوق النشر
+form.label_binary_content: 	الملف\المرجع
+breadcrumb.link_media_list: 	الوسائط
+sonata:
+  media:
+    provider:
+      vimeo: vimeo
+      file: ملف
+      image: صورة
+      youtube: يوتيوب

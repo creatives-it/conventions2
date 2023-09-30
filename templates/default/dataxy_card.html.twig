@@ -1,0 +1,26 @@
+<div class="box {{ boxClass }} box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title" style="background-color: unset;">{{ titres.0 }}</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+        <table class="table table-bordered table-hover sonata-ba-list">
+            <thead>
+            <tr>
+                <th>{{ titres.1 }}</th>
+                <th>{{ titres.2 }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in dataxy %}
+                <tr>
+                    <td align="right">{{ data.x }}</td>
+                    <td align="right">{{ data.y }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

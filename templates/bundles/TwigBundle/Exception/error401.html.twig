@@ -1,0 +1,16 @@
+{% extends 'page_error.html.twig' %}
+
+{% block titre %}
+    Le pseudo ou le mot de passe n'est pas correct !
+{% endblock %}
+
+{% block contenu %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {# ... #}
+    {% endif %}
+
+    <p>
+        Erreur 401: La page demandée n'est pas trouvée. Prière de vérifier l'adresse ou <a href="{{ path('homepage') }}">retourner à la page d'accueil</a>.
+    </p>
+{% endblock %}

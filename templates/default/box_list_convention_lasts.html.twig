@@ -1,0 +1,26 @@
+<div class="box {{ boxClass }} box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title" style="background-color: unset;">{{ titres.0 }}</h3>
+        <div class="box-tools pull-left" style="right: unset;">
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+    <div class="box-body no-padding">
+        <table class="table table-bordered table-hover table-striped sonata-ba-list">
+            <thead>
+            <tr>
+                <th>{{ titres.1 }}</th>
+                <th>{{ titres.2 }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in list %}
+                <tr>
+                    <td align="right">{{ row.x }}</td>
+                    <td align="right"><a href="{{ path('admin_app_convention_view', { 'id': row.id }) }}">{{ row.y }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

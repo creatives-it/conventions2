@@ -1,0 +1,5 @@
+{% if object.contrat.prixRevisable and admin.isGranted('VIEW', object) and admin.hasRoute('maj_revision_prix') %}
+<a class="btn btn-sm btn-warning edit_link" title="Mise à jour révision des prix"  style="display: inline-block" href="{{ admin.generateObjectUrl('maj_revision_prix', object) }}">
+    <i class="fa fa-repeat"></i> MàJ Rév.Prix
+</a>
+{% endif %}

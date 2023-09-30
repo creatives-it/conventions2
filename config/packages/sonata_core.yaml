@@ -1,0 +1,15 @@
+sonata_core:
+    form:
+        mapping:
+            enabled: false
+    flashmessage:
+        success:
+            types:
+                - { type: my_custom_success }
+        warning:
+            types:
+                - { type: my_custom_warning }
+        error:
+            css_class: danger # optionally, a CSS class can be defined
+            types:
+                - { type: my_custom_error }

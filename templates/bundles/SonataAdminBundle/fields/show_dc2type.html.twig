@@ -1,0 +1,10 @@
+{% extends '@SonataAdmin/CRUD/base_show_field.html.twig' %}
+{% block field %}
+    {% for key, v in value %}
+        <div>
+            <p>
+                <b>{{ key|capitalize  }}</b>: {% if v is not iterable %}{{ v|raw }}{% else %}[{% for k,va in v %}{{ k|capitalize }}:{{ va|raw }}{% endfor %}]{% endif %}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock %}

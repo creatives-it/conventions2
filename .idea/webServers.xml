@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="10a2ed0b-de39-4083-bad5-f3940c684eb0" name="conventions sur CRTTA CREATIVES.MA" url="http://crtta.creatives.creatives.ma">
+        <fileTransfer host="ftp.creatives.ma" port="21" rootFolder="/crtta/conventions">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

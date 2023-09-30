@@ -1,0 +1,2 @@
+dependent_select:
+  resource: "@DependentSelectBundle/Resources/config/routing.xml"
