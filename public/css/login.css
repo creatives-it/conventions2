@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.input-group-text, .card-header {
+    text-align: right;
+}
+.login_btn {
+    float: left !important;
+}
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle), .input-group > .input-group-append:last-child > .input-group-text:not(:last-child), .input-group > .input-group-append:not(:last-child) > .btn, .input-group > .input-group-append:not(:last-child) > .input-group-text, .input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .input-group-text {
+    border-radius: 0 7px 7px 0;
+}
+.input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+    border-radius: 7px 0 0 7px;
+}
+html,body{
+    font-family: 'Cairo', sans-serif !important;
+    direction: rtl !important; /* RTL */
+}
+/* FIN RTL */
+
+html,body{
+    /*background-image: url('/img/bg_login.png');
+    background-size: cover;
+    background-repeat: no-repeat;*/
+    background-color: #f5f5f5;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    color: #FFFFFF;
+}
+.h-100 {
+}
+
+#fos_user_registration_form_plainPassword > .form-control {
+    /*color: white !important;*/
+}
+.img-center {
+    text-align: center;
+}
+#registration_form_roles {
+    height: 90px;
+}
+.container{
+    height: 100%;
+    padding-top: 90px;
+    align-content: center;
+}
+
+.card{
+    /*height: 480px;*/
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 500px;
+    background-color: #919191 !important;/* rgba(0,0,0,0.6)#31698A */
+    /*margin-top: 200px;*/
+}
+
+.social_icon span{
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFC312;
+}
+
+.social_icon span:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.card-header h3{
+    color: white;
+}
+
+.social_icon{
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+}
+
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+    color: white;
+}
+
+.remember input
+{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.login_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 150px;
+}
+
+.login_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.mail_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 150px;
+}
+
+.mail_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.links{
+    color: white;
+}
+
+.links a{
+    margin-left: 4px;
+    color: white;
+}

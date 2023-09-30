@@ -1,0 +1,25 @@
+.datepicker {
+    direction: rtl !important;
+}/**/
+
+.content-wrapper,
+.right-side,
+.main-footer,
+.main-header .navbar
+{
+    margin-left: 0 !important;
+}
+.layout-top-nav .content-wrapper,
+.layout-top-nav .right-side,
+.layout-top-nav .main-footer {
+    margin-left: 230px !important;
+}
+section.content-header div.navbar-header {
+    min-width: 70% !important;
+}
+.navbar-left {
+    float: right !important;
+}
+.sidebar-menu li > a > .pull-right-container {
+    display: none !important;
+}
