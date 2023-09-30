@@ -1,3 +1,15 @@
+/.idea/
+/.vscode/
+/*.sql
+/*.txt
+/updateSonataFiles.php
+/public/img/*.psd
+/public/img/*.xcf
+/public/img/archives/
+/public/uploads/
+/composer-setup.php
+/composer.phar
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
