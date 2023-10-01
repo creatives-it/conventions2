@@ -3,7 +3,7 @@ name: CD Conventions su SI.CRTTA
 on:
   push:
     branches:
-      - main
+      - master
 env:
   SSHPASS: ${{ secrets.APP_PASS }}
 jobs:
