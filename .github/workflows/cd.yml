@@ -1,0 +1,59 @@
+# https://help.github.com/en/actions
+name: CD Conventions su SI.CRTTA
+on:
+  push:
+    branches:
+      - main
+env:
+  SSHPASS: ${{ secrets.APP_PASS }}
+jobs:
+
+
+  symfony:
+    name: Deploiement sur SI CRTTA
+    # https://hub.docker.com/_/ubuntu/
+    runs-on: ubuntu-latest
+
+    steps:
+      # —— Setup Github actions 🐙 —————————————————————————————————————————————
+      # https://github.com/actions/checkout (official)
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: APT UPDATE AND INSTALL SSHPASS
+        run: sudo apt update && sudo apt install sshpass
+
+      - name: Check PHP Version
+        run: php -v
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Déploiement sur SI.CRTTA
+        run:
+          sshpass -e ssh -o stricthostkeychecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST_CNV }}
+          " cd public_html/si-barreau/ &&
+          git checkout .htaccess &&
+          git checkout composer.lock &&
+          git pull &&
+          COMPOSER_MEMORY_LIMIT=-1 composer update --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist &&
+          php -d memory_limit=-1 bin/console cache:clear -n
+          "
+          # git reset --hard origin/main &&
+
+      # - name: Déploiement sur Serveur AZURE
+      #   run:
+      #     sshpass -p ${{ secrets.APP_PASS_AZUREUSER}} ssh -o stricthostkeychecking=no ${{ secrets.APP_USERNAME_AZUREUSER }}@${{ secrets.APP_HOST_SIBARREAU }}
+      #     " cd /var/www/html/sibarreau &&
+      #     sudo chown -R azureuser:azureuser /var/www/html/sibarreau &&
+      #     git pull &&
+      #     php -d memory_limit=164M bin/console d:m:m -n   &&
+      #     COMPOSER_MEMORY_LIMIT=-1 php composer.phar install  -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist &&
+      #     php -d memory_limit=-1 bin/console cache:clear -n &&
+      #     sudo chown -R apache:apache /var/www/html/sibarreau "
