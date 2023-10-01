@@ -7,8 +7,6 @@ on:
 env:
   SSHPASS: ${{ secrets.APP_PASS }}
 jobs:
-
-
   symfony:
     name: Deploiement sur SI CRTTA
     # https://hub.docker.com/_/ubuntu/
